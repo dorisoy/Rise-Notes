@@ -1,0 +1,8 @@
+﻿"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Release\ilc\in\Notes.exe"
+/Lib:"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Release\ilc\in"
+/Lib:"C:\Users\black\.nuget\packages\runtime.win10-x86.microsoft.net.native.compiler\2.2.10-rel-29722-00\tools\x86\ilc\lib\Private"
+/WinMD:"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Release\ilc\in\WinMetadata\Microsoft.UI.Xaml.winmd"
+/WinMD:"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Release\ilc\in\WinMetadata\Windows.winmd"
+/VSTelemetrySessionSettings:"{\"IsOptedIn\":true,\"HostName\":\"Dev14\",\"AppInsightsInstrumentationKey\":\"f144292e-e3b2-4011-ac90-20e5c03fbce5\",\"AsimovInstrumentationKey\":\"AIF-312cbd79-9dbb-4c48-a7da-3cc2a931cb70\",\"AppId\":1001,\"UserId\":\"6b6dde0e-f5f8-46b2-bcbf-a17469e45e8f\",\"Id\":\"b5ecc9aa-2947-4106-83cb-f7e9b9a02c8e\",\"ProcessStartTime\":637638403251077882}"
+/RdXmlPath:"C:\Users\black\.nuget\packages\microsoft.net.native.compiler\2.2.10-rel-29722-00\tools\LibraryXML"
+/RunOnlyPreDR

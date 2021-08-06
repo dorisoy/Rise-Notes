@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\black\\source\\repos\\Notes-Main\\WIn11\\Notes.csproj": {}
+    "C:\\Users\\black\\Source\\Repos\\Notes-Git\\WIn11\\Notes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\black\\source\\repos\\Notes-Main\\WIn11\\Notes.csproj": {
+    "C:\\Users\\black\\Source\\Repos\\Notes-Git\\WIn11\\Notes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\black\\source\\repos\\Notes-Main\\WIn11\\Notes.csproj",
+        "projectUniqueName": "C:\\Users\\black\\Source\\Repos\\Notes-Git\\WIn11\\Notes.csproj",
         "projectName": "Notes",
-        "projectPath": "C:\\Users\\black\\source\\repos\\Notes-Main\\WIn11\\Notes.csproj",
+        "projectPath": "C:\\Users\\black\\Source\\Repos\\Notes-Git\\WIn11\\Notes.csproj",
         "packagesPath": "C:\\Users\\black\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\black\\source\\repos\\Notes-Main\\WIn11\\obj\\",
+        "outputPath": "C:\\Users\\black\\Source\\Repos\\Notes-Git\\WIn11\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -46,6 +46,14 @@
             "Microsoft.UI.Xaml": {
               "target": "Package",
               "version": "[2.6.1, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

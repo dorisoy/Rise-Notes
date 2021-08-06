@@ -201,7 +201,7 @@
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem Text="Print" >
+                <MenuFlyoutItem Text="Print" Click="PrintButtonClick">
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Print"/>
                     </MenuFlyoutItem.Icon>
@@ -213,7 +213,6 @@
                         <SymbolIcon Symbol="Font"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
-                <ToggleMenuFlyoutItem Text="Theme"/>
                 <MenuFlyoutSubItem Text="Zoom" >
                     <MenuFlyoutSubItem.Icon>
                         <SymbolIcon Symbol="Zoom"/>

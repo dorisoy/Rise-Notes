@@ -19,6 +19,9 @@ using Windows.Storage.Provider;
 using Windows.Storage.Pickers;
 using System.Threading.Tasks;
 using Windows.UI;
+using Windows.Graphics.Printing;
+using Windows.UI.Xaml.Printing;
+using Windows.UI.Core;
 
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
@@ -204,18 +207,24 @@ namespace WIn11
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
             picker.FileTypeFilter.Add(".txt");
             Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-            using (var inputStream = await file.OpenReadAsync())
-            using (var classicStream = inputStream.AsStreamForRead())
-            using (var streamReader = new StreamReader(classicStream))
-            {
-                while (streamReader.Peek() >= 0)
-                {
-                    textbox.Text=(string.Format("{0}", streamReader.ReadLine()));
-                }
-            }
             var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
-            appView.Title = file.Name;
-            
+            if (file != null)
+            {
+                using (var inputStream = await file.OpenReadAsync())
+                using (var classicStream = inputStream.AsStreamForRead())
+                using (var streamReader = new StreamReader(classicStream))
+                {
+                    while (streamReader.Peek() >= 0)
+                    {
+                        textbox.Text = (string.Format("{0}", streamReader.ReadLine()));
+                    }
+                }
+                appView.Title = file.Name;
+            }
+            else
+            {
+                appView.Title = "New Document";
+            }
         }
 
         private async void Save()
@@ -255,7 +264,14 @@ namespace WIn11
                 Edit.Opacity = 0;
             }
             var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
-            appView.Title = file.Name;
+            if (file != null)
+            {
+                appView.Title = file.Name;
+            }
+            else
+            {
+                appView.Title = "New Document";
+            }
         }
 
         private async void SaveExit()
@@ -283,7 +299,7 @@ namespace WIn11
             }
             else
             {
-
+                textbox.Text = textbox.Text;
             }
 
             Application.Current.Exit();
@@ -338,7 +354,7 @@ namespace WIn11
             ContentDialog AboutDialog = new ContentDialog
             {
                 Title = "Notes",
-                Content = "preAlpha 1.0",
+                Content = "preAlpha 0.1.8",
                 CloseButtonText = "Ok!",
                 DefaultButton = ContentDialogButton.Close
             };
@@ -385,5 +401,134 @@ namespace WIn11
             Edit.Margin = marginEdit;
             AppFontIcon.Visibility = Visibility.Visible;
         }
+
+        private PrintManager printMan;
+        private PrintDocument printDoc;
+        private IPrintDocumentSource printDocSource;
+
+        #region Register for printing
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // Register for PrintTaskRequested event
+            printMan = PrintManager.GetForCurrentView();
+            printMan.PrintTaskRequested += PrintTaskRequested;
+
+            // Build a PrintDocument and register for callbacks
+            printDoc = new PrintDocument();
+            printDocSource = printDoc.DocumentSource;
+            printDoc.Paginate += Paginate;
+            printDoc.GetPreviewPage += GetPreviewPage;
+            printDoc.AddPages += AddPages;
+        }
+
+        #endregion
+
+        #region Showing the print dialog
+
+        private async void PrintButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (PrintManager.IsSupported())
+            {
+                try
+                {
+                    // Show print UI
+                    await PrintManager.ShowPrintUIAsync();
+                }
+                catch
+                {
+                    // Printing cannot proceed at this time
+                    ContentDialog noPrintingDialog = new ContentDialog()
+                    {
+                        Title = "Printing error",
+                        Content = "Ooops... Try Again later",
+                        PrimaryButtonText = "OK"
+                    };
+                    await noPrintingDialog.ShowAsync();
+                }
+            }
+            else
+            {
+                // Printing is not supported on this device
+                ContentDialog noPrintingDialog = new ContentDialog()
+                {
+                    Title = "Printing not supported",
+                    Content = "Your device Is incompatible with Printing",
+                    PrimaryButtonText = "OK"
+                };
+                await noPrintingDialog.ShowAsync();
+            }
+        }
+
+        private void PrintTaskRequested(PrintManager sender, PrintTaskRequestedEventArgs args)
+        {
+            // Create the PrintTask.
+            // Defines the title and delegate for PrintTaskSourceRequested
+            var printTask = args.Request.CreatePrintTask("Print", PrintTaskSourceRequrested);
+
+            // Handle PrintTask.Completed to catch failed print jobs
+            printTask.Completed += PrintTaskCompleted;
+        }
+
+        private void PrintTaskSourceRequrested(PrintTaskSourceRequestedArgs args)
+        {
+            // Set the document source.
+            args.SetSource(printDocSource);
+        }
+
+        #endregion
+
+        #region Print preview
+
+        private void Paginate(object sender, PaginateEventArgs e)
+        {
+            // As I only want to print one Rectangle, so I set the count to 1
+            printDoc.SetPreviewPageCount(1, PreviewPageCountType.Final);
+        }
+
+        private void GetPreviewPage(object sender, GetPreviewPageEventArgs e)
+        {
+            // Provide a UIElement as the print preview.
+            printDoc.SetPreviewPage(e.PageNumber, this.textbox);
+        }
+
+        #endregion
+
+        #region Add pages to send to the printer
+
+        private void AddPages(object sender, AddPagesEventArgs e)
+        {
+            printDoc.AddPage(this.textbox);
+
+            // Indicate that all of the print pages have been provided
+            printDoc.AddPagesComplete();
+        }
+
+        #endregion
+
+        #region Print task completed
+
+        private async void PrintTaskCompleted(PrintTask sender, PrintTaskCompletedEventArgs args)
+        {
+            // Notify the user when the print operation fails.
+            if (args.Completion == PrintTaskCompletion.Failed)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    ContentDialog noPrintingDialog = new ContentDialog()
+                    {
+                        Title = "Printing error",
+                        Content = "Oops... Try Again Later",
+                        PrimaryButtonText = "OK"
+                    };
+                    await noPrintingDialog.ShowAsync();
+                });
+            }
+        }
+
+        #endregion
     }
+
+
+
 }
