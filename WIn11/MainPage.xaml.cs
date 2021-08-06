@@ -223,7 +223,6 @@ namespace WIn11
             }
             else
             {
-
                 appView.Title = "New Document";
             }
         }
