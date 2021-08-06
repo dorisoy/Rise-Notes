@@ -1,1 +1,0 @@
-MainPackage=C:\Users\black\source\repos\Notes-Main\WIn11\bin\x86\Debug\Notes_1.0.0.0_x86_Debug.msix
