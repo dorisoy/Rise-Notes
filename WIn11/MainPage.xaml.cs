@@ -22,6 +22,8 @@ using Windows.UI;
 using Windows.Graphics.Printing;
 using Windows.UI.Xaml.Printing;
 using Windows.UI.Core;
+using System.Windows;
+using Microsoft.UI.Xaml.Controls;
 
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
@@ -32,18 +34,21 @@ namespace WIn11
     /// </summary>
     /// 
 
-
+    
     
     public sealed partial class MainPage : Page
     {
         bool changed;
-
         
         public MainPage()
         {
-            this.InitializeComponent();
-
             
+            this.InitializeComponent();
+            
+            ElementSoundPlayer.State = ElementSoundPlayerState.On;
+            ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+
+            var view = ApplicationView.GetForCurrentView();
 
             if (String.IsNullOrWhiteSpace(textbox.Text))
             {
@@ -118,6 +123,8 @@ namespace WIn11
             Window.Current.Activated += Current_Activated;
         }
 
+
+
         private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
         {
             UpdateTitleBarLayout(sender);
@@ -145,19 +152,25 @@ namespace WIn11
             }
         }
 
+        
+
         // Update the TitleBar based on the inactive/active state of the app
         private void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
         {
             SolidColorBrush defaultForegroundBrush = (SolidColorBrush)Application.Current.Resources["TextFillColorPrimaryBrush"];
             SolidColorBrush inactiveForegroundBrush = (SolidColorBrush)Application.Current.Resources["TextFillColorDisabledBrush"];
-
+            
             if (e.WindowActivationState == Windows.UI.Core.CoreWindowActivationState.Deactivated)
             {
                 AppTitle.Foreground = inactiveForegroundBrush;
+
+                
             }
             else
             {
                 AppTitle.Foreground = defaultForegroundBrush;
+
+                
             }
         }
 
@@ -355,7 +368,7 @@ namespace WIn11
             ContentDialog AboutDialog = new ContentDialog
             {
                 Title = "Notes",
-                Content = "preAlpha 0.1.8",
+                Content = "Alpha 0.2.5",
                 CloseButtonText = "Ok!",
                 DefaultButton = ContentDialogButton.Close
             };
@@ -376,7 +389,7 @@ namespace WIn11
         private async void compactOverlayButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModePreferences compactOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
-            compactOptions.CustomSize = new Windows.Foundation.Size(250, 310);
+            compactOptions.CustomSize = new Windows.Foundation.Size(320, 330);
             bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
             exitbutt.Visibility = Visibility.Visible;
             menuBar.Visibility = Visibility.Collapsed;
@@ -435,6 +448,7 @@ namespace WIn11
                 {
                     // Show print UI
                     await PrintManager.ShowPrintUIAsync();
+                    textbox.Foreground = new SolidColorBrush(Colors.Black);
                 }
                 catch
                 {
@@ -469,6 +483,7 @@ namespace WIn11
 
             // Handle PrintTask.Completed to catch failed print jobs
             printTask.Completed += PrintTaskCompleted;
+            
         }
 
         private void PrintTaskSourceRequrested(PrintTaskSourceRequestedArgs args)
@@ -509,11 +524,15 @@ namespace WIn11
 
         #region Print task completed
 
+        
+
         private async void PrintTaskCompleted(PrintTask sender, PrintTaskCompletedEventArgs args)
         {
+            
             // Notify the user when the print operation fails.
             if (args.Completion == PrintTaskCompletion.Failed)
             {
+                
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     ContentDialog noPrintingDialog = new ContentDialog()
@@ -525,11 +544,62 @@ namespace WIn11
                     await noPrintingDialog.ShowAsync();
                 });
             }
+            
         }
 
         #endregion
+
+        
+        
+
+
+        private async void MenuFlyoutItem_Click_7(object sender, RoutedEventArgs e)
+        {
+            if (AudioTg.IsChecked)
+            {
+                ElementSoundPlayer.State = ElementSoundPlayerState.On;
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+                AudioTg.Icon = new SymbolIcon(Symbol.Audio);
+                AudioTg.Text = "Audio Activated";
+            }
+            else
+            {
+                AudioTg.Icon = new SymbolIcon(Symbol.Mute);
+                ElementSoundPlayer.State = ElementSoundPlayerState.Off;
+                AudioTg.Text = "Audio Deactivated";
+            }
+            
+        }
+
+        private void MenuFlyoutItem_Click_8(object sender, RoutedEventArgs e)
+        {
+            var view = ApplicationView.GetForCurrentView();
+            if (view.IsFullScreenMode)
+            {
+                view.ExitFullScreenMode();
+                ful.Text = "Full Screen";
+                ful.Icon = new SymbolIcon(Symbol.FullScreen);
+                menuBar.HorizontalAlignment = HorizontalAlignment.Left;
+                Thickness margin = menuBar.Margin;
+                margin.Top = 37;
+                menuBar.Margin = margin;
+            }
+            else
+            {
+                view.TryEnterFullScreenMode();
+                ful.Text = "Window Mode";
+                ful.Icon = new SymbolIcon(Symbol.BackToWindow);
+                menuBar.HorizontalAlignment = HorizontalAlignment.Center;
+                Thickness margin = menuBar.Margin;
+                margin.Top = 5;
+                menuBar.Margin = margin;
+            }
+        }
+
+        private async void MenuFlyoutItem_Click_9(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
-
-
-
+    
 }

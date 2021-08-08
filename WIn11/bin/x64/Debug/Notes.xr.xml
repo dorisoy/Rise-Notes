@@ -9,6 +9,8 @@
     </RootType>
     <RootType FullName="Microsoft.UI.Xaml.Controls.XamlControlsResources" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MinHeight" />
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
     </RootType>
@@ -28,6 +30,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="AcceptsReturn" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="BorderBrush" />
       <RootEvent Name="TextChanged" />
     </RootType>
@@ -206,7 +209,7 @@
       <RootProperty Name="Content" />
       <RootEvent Name="DisplayModeChanged" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuBar">
+    <RootType FullName="Microsoft.UI.Xaml.Controls.MenuBar">
       <RootProperty Name="Width" />
       <RootProperty Name="Margin" />
       <RootProperty Name="FontSize" />
@@ -216,14 +219,14 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Items" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuBarItem">
+    <RootType FullName="Microsoft.UI.Xaml.Controls.MenuBarItem">
       <RootProperty Name="Title" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Height" />
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="BorderBrush" />
-      <RootProperty Name="Items" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Items" />
       <RootProperty Name="Margin" />
       <RootProperty Name="BorderThickness" />
     </RootType>
@@ -237,6 +240,12 @@
       <RootProperty Name="Text" />
       <RootProperty Name="Icon" />
       <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleMenuFlyoutItem">
+      <RootProperty Name="Text" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="IsChecked" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutSeparator" />
     <RootType FullName="Windows.UI.Xaml.Controls.SymbolIcon">
@@ -257,7 +266,12 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.FlyoutBase">
+      <RootMethod Name="GetAttachedFlyout" />
+      <RootMethod Name="SetAttachedFlyout" />
+    </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.NullExtension" />
+    <RootType FullName="Microsoft.UI.Xaml.Controls.CommandBarFlyout" />
     <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
       <RootProperty Name="EndPoint" />
       <RootProperty Name="MappingMode" />
