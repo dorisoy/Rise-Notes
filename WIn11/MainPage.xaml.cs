@@ -24,6 +24,8 @@ using Windows.UI.Xaml.Printing;
 using Windows.UI.Core;
 using System.Windows;
 using Microsoft.UI.Xaml.Controls;
+using Windows.Storage.Streams;
+using Windows.UI.Text;
 
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
@@ -34,33 +36,26 @@ namespace WIn11
     /// </summary>
     /// 
 
-    
-    
+
+
     public sealed partial class MainPage : Page
     {
         bool changed;
-        
+
         public MainPage()
         {
-            
+
             this.InitializeComponent();
-            
+
             ElementSoundPlayer.State = ElementSoundPlayerState.On;
             ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
 
             var view = ApplicationView.GetForCurrentView();
-
-            if (String.IsNullOrWhiteSpace(textbox.Text))
-            {
-                changed = false;
-            }
-            else
-            {
-                changed = true;
-            }
-
+            
+            Color cl = txt.Document.Selection.CharacterFormat.ForegroundColor;
+            
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-
+            changed = false;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
@@ -74,7 +69,7 @@ namespace WIn11
 
                 if (changed == true)
                 {
-                    
+
                     ContentDialog saveDialog = new ContentDialog
                     {
                         Title = "Exit without saving the edits?",
@@ -101,7 +96,7 @@ namespace WIn11
                 }
 
             };
-                
+
 
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -152,25 +147,25 @@ namespace WIn11
             }
         }
 
-        
+
 
         // Update the TitleBar based on the inactive/active state of the app
         private void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
         {
             SolidColorBrush defaultForegroundBrush = (SolidColorBrush)Application.Current.Resources["TextFillColorPrimaryBrush"];
             SolidColorBrush inactiveForegroundBrush = (SolidColorBrush)Application.Current.Resources["TextFillColorDisabledBrush"];
-            
+
             if (e.WindowActivationState == Windows.UI.Core.CoreWindowActivationState.Deactivated)
             {
                 AppTitle.Foreground = inactiveForegroundBrush;
 
-                
+
             }
             else
             {
                 AppTitle.Foreground = defaultForegroundBrush;
 
-                
+
             }
         }
 
@@ -182,7 +177,7 @@ namespace WIn11
             int minimalIndent = 104;
 
             // If the back button is not visible, reduce the TitleBar content indent.
-            
+
 
             Thickness currMargin = AppTitleBar.Margin;
 
@@ -201,39 +196,55 @@ namespace WIn11
             }
         }
 
-       
+
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text = "";
-            changed = false;
+            txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
+
             Edit.Opacity = 0;
             var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
             appView.Title = "New Document";
+            changed = false;
         }
 
         private async void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
-
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
-            picker.FileTypeFilter.Add(".txt");
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
             var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+
+            Windows.Storage.Pickers.FileOpenPicker open =
+                new Windows.Storage.Pickers.FileOpenPicker();
+            open.SuggestedStartLocation =
+                Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            open.FileTypeFilter.Add(".txt");
+            open.FileTypeFilter.Add(".rtf");
+
+            Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
+
             if (file != null)
             {
-                using (var inputStream = await file.OpenReadAsync())
-                using (var classicStream = inputStream.AsStreamForRead())
-                using (var streamReader = new StreamReader(classicStream))
+                try
                 {
-                    while (streamReader.Peek() >= 0)
-                    {
-                        textbox.Text = (string.Format("{0}", streamReader.ReadLine()));
-                    }
+                    IBuffer buffer = await FileIO.ReadBufferAsync(file);
+                    var reader = DataReader.FromBuffer(buffer);
+                    reader.UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding.Utf8;
+                    string text = reader.ReadString(buffer.Length);
+                    appView.Title = file.Name;
+                    txt.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
+                    changed = false;
                 }
-                appView.Title = file.Name;
+                catch (Exception)
+                {
+                    ContentDialog errorDialog = new ContentDialog()
+                    {
+                        Title = "File open error",
+                        Content = "Sorry, I couldn't open the file.",
+                        PrimaryButtonText = "Ok"
+                    };
+                    await errorDialog.ShowAsync();
+                }
             }
+
             else
             {
 
@@ -243,31 +254,38 @@ namespace WIn11
 
         private async void Save()
         {
-            FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
-            picker.SuggestedFileName = "new text";
-            picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-            StorageFile file = await picker.PickSaveFileAsync();
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+
+
+            savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
+
+
+            savePicker.SuggestedFileName = "New Document";
+
+            StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
             {
 
                 CachedFileManager.DeferUpdates(file);
-                string fileContent = textbox.Text;
-                await FileIO.WriteTextAsync(file, fileContent);
 
-                FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
-                if (updateStatus == FileUpdateStatus.Complete)
+                using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                    await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
                 {
-
+                    txt.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
                 }
-                else
+
+
+                FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                if (status != FileUpdateStatus.Complete)
                 {
-
+                    Windows.UI.Popups.MessageDialog errorBox =
+                        new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                    await errorBox.ShowAsync();
                 }
+                
             }
-            else
-            {
 
-            }
             changed = false;
             if (changed == true)
             {
@@ -290,54 +308,46 @@ namespace WIn11
 
         private async void SaveExit()
         {
-            FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
-            picker.SuggestedFileName = "new text";
-            picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-            StorageFile file = await picker.PickSaveFileAsync();
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+
+
+            savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
+
+
+            savePicker.SuggestedFileName = "New Document";
+
+            StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
             {
 
                 CachedFileManager.DeferUpdates(file);
-                string fileContent = textbox.Text;
-                await FileIO.WriteTextAsync(file, fileContent);
 
-                FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
-                if (updateStatus == FileUpdateStatus.Complete)
+                using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                    await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
                 {
-
+                    txt.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
                 }
-                else
-                {
 
+
+                FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                if (status != FileUpdateStatus.Complete)
+                {
+                    Windows.UI.Popups.MessageDialog errorBox =
+                        new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                    await errorBox.ShowAsync();
                 }
             }
-            else
-            {
-                textbox.Text = textbox.Text;
-            }
+
 
             Application.Current.Exit();
-            
+
         }
 
         private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
         {
             Save();
-            
-        }
-        
 
-        private void textbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            changed = true;
-            if (changed == true)
-            {
-                Edit.Opacity = 0.6;
-            }
-            else
-            {
-                Edit.Opacity = 0;
-            }
         }
 
         public static async Task<string> ShowAddDialogAsync(string title)
@@ -360,7 +370,7 @@ namespace WIn11
 
         private async void MenuFlyoutItem_Click_3(object sender, RoutedEventArgs e)
         {
-            textbox.FontFamily = new FontFamily(await ShowAddDialogAsync("What Font?"));
+            txt.FontFamily = new FontFamily(await ShowAddDialogAsync("Font"));
         }
 
         private async void MenuFlyoutItem_Click_4(object sender, RoutedEventArgs e)
@@ -368,7 +378,7 @@ namespace WIn11
             ContentDialog AboutDialog = new ContentDialog
             {
                 Title = "Notes",
-                Content = "Alpha 0.2.5",
+                Content = "Beta 0.3",
                 CloseButtonText = "Ok!",
                 DefaultButton = ContentDialogButton.Close
             };
@@ -378,12 +388,12 @@ namespace WIn11
 
         private void MenuFlyoutItem_Click_5(object sender, RoutedEventArgs e)
         {
-            textbox.FontSize = (textbox.FontSize + 1);
+            txt.FontSize = (txt.FontSize + 1);
         }
 
         private void MenuFlyoutItem_Click_6(object sender, RoutedEventArgs e)
         {
-            textbox.FontSize = (textbox.FontSize - 1);
+            txt.FontSize = (txt.FontSize - 1);
         }
 
         private async void compactOverlayButton_Click(object sender, RoutedEventArgs e)
@@ -448,7 +458,10 @@ namespace WIn11
                 {
                     // Show print UI
                     await PrintManager.ShowPrintUIAsync();
-                    textbox.Foreground = new SolidColorBrush(Colors.Black);
+
+                    txt.Foreground = new SolidColorBrush(Colors.Black);
+
+
                 }
                 catch
                 {
@@ -480,10 +493,14 @@ namespace WIn11
             // Create the PrintTask.
             // Defines the title and delegate for PrintTaskSourceRequested
             var printTask = args.Request.CreatePrintTask("Print", PrintTaskSourceRequrested);
-
+            {
+                IList<string> displayedOptions = printTask.Options.DisplayedOptions;
+            }
+            
             // Handle PrintTask.Completed to catch failed print jobs
             printTask.Completed += PrintTaskCompleted;
-            
+
+
         }
 
         private void PrintTaskSourceRequrested(PrintTaskSourceRequestedArgs args)
@@ -505,7 +522,7 @@ namespace WIn11
         private void GetPreviewPage(object sender, GetPreviewPageEventArgs e)
         {
             // Provide a UIElement as the print preview.
-            printDoc.SetPreviewPage(e.PageNumber, this.textbox);
+            printDoc.SetPreviewPage(e.PageNumber, txt);
         }
 
         #endregion
@@ -514,7 +531,7 @@ namespace WIn11
 
         private void AddPages(object sender, AddPagesEventArgs e)
         {
-            printDoc.AddPage(this.textbox);
+            printDoc.AddPage(txt);
 
             // Indicate that all of the print pages have been provided
             printDoc.AddPagesComplete();
@@ -524,15 +541,15 @@ namespace WIn11
 
         #region Print task completed
 
-        
+
 
         private async void PrintTaskCompleted(PrintTask sender, PrintTaskCompletedEventArgs args)
         {
-            
+
             // Notify the user when the print operation fails.
             if (args.Completion == PrintTaskCompletion.Failed)
             {
-                
+
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     ContentDialog noPrintingDialog = new ContentDialog()
@@ -549,11 +566,7 @@ namespace WIn11
 
         #endregion
 
-        
-        
-
-
-        private async void MenuFlyoutItem_Click_7(object sender, RoutedEventArgs e)
+        private void MenuFlyoutItem_Click_7(object sender, RoutedEventArgs e)
         {
             if (AudioTg.IsChecked)
             {
@@ -596,8 +609,108 @@ namespace WIn11
             }
         }
 
-        private async void MenuFlyoutItem_Click_9(object sender, RoutedEventArgs e)
+        private void MenuFlyoutItem_Click_9(object sender, RoutedEventArgs e)
         {
+            FindBoxHighlightMatches();
+        }
+
+        private async void FindBoxHighlightMatches()
+        {
+            var inputTextBox = new TextBox { AcceptsReturn = false };
+            (inputTextBox as FrameworkElement).VerticalAlignment = VerticalAlignment.Bottom;
+            var dialog = new ContentDialog
+            {
+                Content = inputTextBox,
+                Title = "What Are You Searching?",
+                IsSecondaryButtonEnabled = true,
+                PrimaryButtonText = "Search",
+                SecondaryButtonText = "Cancel"
+            };
+            if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+            {
+                FindBoxRemoveHighlights();
+
+                Color highlightBackgroundColor = (Color)App.Current.Resources["SystemColorHighlightColor"];
+                Color highlightForegroundColor = (Color)App.Current.Resources["SystemColorHighlightTextColor"];
+
+                string textToFind = inputTextBox.Text;
+                if (textToFind != null)
+                {
+                    ITextRange searchRange = txt.Document.GetRange(0, 0);
+                    while (searchRange.FindText(textToFind, TextConstants.MaxUnitCount, FindOptions.None) > 0)
+                    {
+                        searchRange.CharacterFormat.BackgroundColor = highlightBackgroundColor;
+                        searchRange.CharacterFormat.ForegroundColor = highlightForegroundColor;
+                    }
+                }
+            }
+
+            else
+            {
+
+            }
+
+
+            }
+
+        private void FindBoxRemoveHighlights()
+        {
+            ITextRange documentRange = txt.Document.GetRange(0, TextConstants.MaxUnitCount);
+            SolidColorBrush defaultBackground = txt.Background as SolidColorBrush;
+            SolidColorBrush defaultForeground = txt.Foreground as SolidColorBrush;
+
+            documentRange.CharacterFormat.BackgroundColor = defaultBackground.Color;
+            documentRange.CharacterFormat.ForegroundColor = defaultForeground.Color;
+        }
+
+        private void Editor_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
+
+            // reset colors to correct defaults for Focused state
+            ITextRange documentRange = txt.Document.GetRange(0, TextConstants.MaxUnitCount);
+            SolidColorBrush background = new SolidColorBrush(Colors.Transparent);
+            SolidColorBrush defaultForeground = txt.Foreground as SolidColorBrush;
+
+            if (background != null)
+            {
+                documentRange.CharacterFormat.BackgroundColor = background.Color;
+                if (App.Current.RequestedTheme == ApplicationTheme.Dark)
+                {
+                    txt.Foreground = new SolidColorBrush(Colors.White);
+                    txt.Document.Selection.CharacterFormat.ForegroundColor = Colors.White;
+                }
+                else
+                {
+                    txt.Foreground = new SolidColorBrush(Colors.Black);
+                    txt.Document.Selection.CharacterFormat.ForegroundColor = Colors.Black;
+                }
+            }
+        }
+
+        private void txt_TextChanged(object sender, RoutedEventArgs e)
+        {
+            string emn = txt.ToString();
+           
+            if (emn == string.Empty)
+            {
+                changed = false;
+            }
+            else
+            {
+                changed = true;
+            }
+            if (changed == true)
+            {
+                Edit.Opacity = 0.6;
+            }
+            else
+            {
+
+                Edit.Opacity = 0;
+            }
+
+            
             
         }
     }

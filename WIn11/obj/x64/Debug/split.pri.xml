@@ -23,6 +23,11 @@
 				</Candidate>
 			</NamedResource>
 			<ResourceMapSubtree name="Assets">
+				<NamedResource name="BadgeLogo.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/BadgeLogo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\BadgeLogo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="LargeTile.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/LargeTile.png">
 					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
 						<Value>Assets\LargeTile.scale-200.png</Value>
@@ -101,11 +106,6 @@
 				<NamedResource name="StoreLogo.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/StoreLogo.png">
 					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
 						<Value>Assets\StoreLogo.scale-200.png</Value>
-					</Candidate>
-				</NamedResource>
-				<NamedResource name="suss.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/suss.png">
-					<Candidate type="Path">
-						<Value>Assets\suss.png</Value>
 					</Candidate>
 				</NamedResource>
 				<NamedResource name="Wide310x150Logo.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/Wide310x150Logo.png">

@@ -15,7 +15,6 @@
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Properties\Default.rd.xml"			"Properties\Default.rd.xml"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\entrypoint\Notes.exe"			"entrypoint\Notes.exe"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\Wide310x150Logo.scale-200.png"			"Assets\Wide310x150Logo.scale-200.png"
-"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\suss.png"			"Assets\suss.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\StoreLogo.scale-200.png"			"Assets\StoreLogo.scale-200.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\Square44x44Logo.targetsize-48.png"			"Assets\Square44x44Logo.targetsize-48.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\Square44x44Logo.targetsize-32.png"			"Assets\Square44x44Logo.targetsize-32.png"
@@ -38,3 +37,4 @@
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\SmallTile.scale-200.png"			"Assets\SmallTile.scale-200.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\LockScreenLogo.scale-200.png"			"Assets\LockScreenLogo.scale-200.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\LargeTile.scale-200.png"			"Assets\LargeTile.scale-200.png"
+"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\BadgeLogo.scale-200.png"			"Assets\BadgeLogo.scale-200.png"

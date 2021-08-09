@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Source>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</Source>
-    <SmallTileSource>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</SmallTileSource>
-    <MediumTileSource>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</MediumTileSource>
-    <WideTileSource>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</WideTileSource>
-    <LargeTileSource>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</LargeTileSource>
-    <AppIconSource>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</AppIconSource>
-    <SplashScreenSource>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</SplashScreenSource>
-    <PackageLogoSource>C:\Users\black\source\repos\WIn11\WIn11\Assets\suss.png</PackageLogoSource>
+    <Source>C:\Users\black\Documents\Icon.png</Source>
+    <SmallTileSource>C:\Users\black\Documents\Icon.png</SmallTileSource>
+    <MediumTileSource>C:\Users\black\Documents\Icon.png</MediumTileSource>
+    <WideTileSource>C:\Users\black\Documents\Icon.png</WideTileSource>
+    <LargeTileSource>C:\Users\black\Documents\Icon.png</LargeTileSource>
+    <AppIconSource>C:\Users\black\Documents\Icon.png</AppIconSource>
+    <SplashScreenSource>C:\Users\black\Documents\Icon.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\black\Documents\Icon.png</PackageLogoSource>
     <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
+    <BadgeLogoSource>C:\Users\black\Documents\Icon.png</BadgeLogoSource>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <DeviceId>30f105c9-681e-420b-a277-7c086ead8a4e</DeviceId>

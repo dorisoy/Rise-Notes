@@ -11,3 +11,4 @@
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\SplashScreen.scale-400.png"			"Assets\SplashScreen.scale-400.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\SmallTile.scale-400.png"			"Assets\SmallTile.scale-400.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\LargeTile.scale-400.png"			"Assets\LargeTile.scale-400.png"
+"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\BadgeLogo.scale-400.png"			"Assets\BadgeLogo.scale-400.png"

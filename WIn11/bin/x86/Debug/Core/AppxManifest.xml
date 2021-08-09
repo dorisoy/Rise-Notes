@@ -7,7 +7,7 @@
 
     Per ulteriori informazioni sui file manifesto di pacchetto, vedere http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="35c52142-9b91-4581-8bf3-4418b913ff96" Publisher="CN=Blackdev9" Version="0.2.5.0" ProcessorArchitecture="x86" />
+  <Identity Name="35c52142-9b91-4581-8bf3-4418b913ff96" Publisher="CN=Blackdev9" Version="0.3.0.0" ProcessorArchitecture="x86" />
   <mp:PhoneIdentity PhoneProductId="35c52142-9b91-4581-8bf3-4418b913ff96" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Notes</DisplayName>
@@ -29,6 +29,7 @@
       <uap:VisualElements DisplayName="Notes" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Simple modern Notepad" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badge" />
       </uap:VisualElements>
     </Application>
   </Applications>

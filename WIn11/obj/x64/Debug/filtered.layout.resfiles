@@ -1,4 +1,9 @@
 WinMetadata\Windows.winmd
+Assets\BadgeLogo.scale-100.png
+Assets\BadgeLogo.scale-125.png
+Assets\BadgeLogo.scale-150.png
+Assets\BadgeLogo.scale-200.png
+Assets\BadgeLogo.scale-400.png
 Assets\LargeTile.scale-100.png
 Assets\LargeTile.scale-125.png
 Assets\LargeTile.scale-150.png
@@ -45,7 +50,6 @@ Assets\StoreLogo.scale-125.png
 Assets\StoreLogo.scale-150.png
 Assets\StoreLogo.scale-200.png
 Assets\StoreLogo.scale-400.png
-Assets\suss.png
 Assets\Wide310x150Logo.scale-100.png
 Assets\Wide310x150Logo.scale-125.png
 Assets\Wide310x150Logo.scale-150.png
