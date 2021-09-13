@@ -4,6 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)win2d.uwp\1.26.0\build\win10\Win2D.uwp.targets" Condition="Exists('$(NuGetPackageRoot)win2d.uwp\1.26.0\build\win10\Win2D.uwp.targets')" />
     <Import Project="$(NuGetPackageRoot)runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets" Condition="Exists('$(NuGetPackageRoot)runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.12\build\runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets')" />
     <Import Project="$(NuGetPackageRoot)runtime.win10-x86.microsoft.net.native.sharedlibrary\2.2.8-rel-29722-00\build\runtime.win10-x86.Microsoft.Net.Native.SharedLibrary.targets" Condition="Exists('$(NuGetPackageRoot)runtime.win10-x86.microsoft.net.native.sharedlibrary\2.2.8-rel-29722-00\build\runtime.win10-x86.Microsoft.Net.Native.SharedLibrary.targets')" />
     <Import Project="$(NuGetPackageRoot)runtime.win10-x86.microsoft.net.native.compiler\2.2.10-rel-29722-00\build\runtime.win10-x86.Microsoft.Net.Native.Compiler.targets" Condition="Exists('$(NuGetPackageRoot)runtime.win10-x86.microsoft.net.native.compiler\2.2.10-rel-29722-00\build\runtime.win10-x86.Microsoft.Net.Native.Compiler.targets')" />

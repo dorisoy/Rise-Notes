@@ -10,7 +10,6 @@ C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Core\Notes.exe
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes.build.appxrecipe
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\System.Runtime.dll
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Microsoft.UI.Xaml.Markup.winmd
-C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\Notes.csproj.AssemblyReference.cache
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\App.g.i.cs
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\App.g.cs
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\MainPage.g.i.cs
@@ -44,8 +43,11 @@ C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\qualifiers.txt.interme
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\ProjectArchitectures.txt
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637424743200000000.json
-C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Core\ForBundle\AppxManifest.xml
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\System.Drawing.Common.dll
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\FxResources.System.Drawing.Common.SR.resw
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\resources.en-us.resfiles
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\resources.en-us.resfiles.intermediate
+C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Microsoft.Graphics.Canvas.dll
+C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Microsoft.Graphics.Canvas.winmd
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_637552364420000000.json
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\Notes.csproj.AssemblyReference.cache

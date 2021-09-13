@@ -10,7 +10,7 @@
   <Identity
     Name="35c52142-9b91-4581-8bf3-4418b913ff96"
     Publisher="CN=Blackdev9"
-    Version="0.3.0.0" />
+    Version="0.4.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="35c52142-9b91-4581-8bf3-4418b913ff96" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -42,11 +42,33 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
         <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badge"/>
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="notes">
+            <uap:SupportedFileTypes>
+              <uap:FileType ContentType="text/txt">.txt</uap:FileType>
+              <uap:FileType ContentType="text/rtf">.rtf</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>Notes</uap:DisplayName>
+            <uap:Logo>Assets\iconus.png</uap:Logo>
+            <uap:EditFlags OpenIsSafe="true"/>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+        <uap:Extension Category="windows.fileOpenPicker">
+          <uap:FileOpenPicker>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.txt</uap:FileType>
+              <uap:FileType>.rtf</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileOpenPicker>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
 
-  <Capabilities>
-    <Capability Name="internetClient" />
-	<rescap:Capability Name="confirmAppClose" />
-  </Capabilities>
+	<Capabilities>
+		<Capability Name="internetClient" />
+		<rescap:Capability Name="confirmAppClose" />
+		<rescap:Capability Name="broadFileSystemAccess" />
+	</Capabilities>
 </Package>

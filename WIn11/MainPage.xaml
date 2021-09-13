@@ -146,7 +146,7 @@
                 </MenuFlyoutItem>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem Text="Search" Click="MenuFlyoutItem_Click_9" Icon="Find"/>
-                <MenuFlyoutItem Text="Print" Click="PrintButtonClick">
+                <MenuFlyoutItem Text="Print" Click="PrintButton">
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Print"/>
                     </MenuFlyoutItem.Icon>

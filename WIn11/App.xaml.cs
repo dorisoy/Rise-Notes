@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -22,6 +23,15 @@ namespace WIn11
     /// </summary>
     sealed partial class App : Application
     {
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            base.OnFileActivated(args);
+            var rootFrame = new Frame();
+            rootFrame.Navigate(typeof(MainPage), args);
+            Window.Current.Content = rootFrame;
+            Window.Current.Activate();
+        }
+
         /// <summary>
         /// Inizializza l'oggetto Application singleton. Si tratta della prima riga del codice creato
         /// creato e, come tale, corrisponde all'equivalente logico di main() o WinMain().

@@ -1,1 +1,1 @@
-C:\Users\black\Downloads\notes\Notes_0.3.0.0_Debug_Test\Notes_0.3.0.0_x86_x64_Debug.msixbundle
+C:\Users\black\Downloads\notes\Notes_0.4.0.0_Debug_Test\Notes_0.4.0.0_x86_x64_Debug.msixbundle

@@ -146,7 +146,7 @@
                 </MenuFlyoutItem>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem x:ConnectionId='28' Text="Search"                                Icon="Find"/>
-                <MenuFlyoutItem x:ConnectionId='29' Text="Print"                         >
+                <MenuFlyoutItem x:ConnectionId='29' Text="Print"                    >
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Print"/>
                     </MenuFlyoutItem.Icon>

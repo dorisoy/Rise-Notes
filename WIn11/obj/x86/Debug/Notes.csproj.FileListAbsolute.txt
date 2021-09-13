@@ -49,3 +49,6 @@ C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\resources.en-us.resfil
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\resources.en-us.resfiles.intermediate
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\Notes.csproj.AssemblyReference.cache
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\Core\ForBundle\AppxManifest.xml
+C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\Microsoft.Graphics.Canvas.dll
+C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\Microsoft.Graphics.Canvas.winmd
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_637552364420000000.json

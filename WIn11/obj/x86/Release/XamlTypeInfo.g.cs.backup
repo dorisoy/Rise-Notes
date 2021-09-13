@@ -223,7 +223,7 @@ namespace Notes.Notes_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[36];
+            _typeNameTable = new string[45];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Windows.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -252,16 +252,25 @@ namespace Notes.Notes_XamlTypeInfo
             _typeNameTable[25] = "String";
             _typeNameTable[26] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
             _typeNameTable[27] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
-            _typeNameTable[28] = "WIn11.MainPage";
-            _typeNameTable[29] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[30] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[31] = "Microsoft.UI.Xaml.Controls.IconSource";
-            _typeNameTable[32] = "Windows.UI.Xaml.Media.Brush";
-            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[34] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[35] = "Int32";
+            _typeNameTable[28] = "Microsoft.UI.Xaml.Controls.MenuBar";
+            _typeNameTable[29] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.MenuBarItem>";
+            _typeNameTable[30] = "Microsoft.UI.Xaml.Controls.MenuBarItem";
+            _typeNameTable[31] = "System.Collections.Generic.IList`1<Windows.UI.Xaml.Controls.MenuFlyoutItemBase>";
+            _typeNameTable[32] = "Windows.UI.Xaml.Controls.MenuFlyoutItemBase";
+            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.CommandBarFlyout";
+            _typeNameTable[34] = "Windows.UI.Xaml.Controls.Primitives.FlyoutBase";
+            _typeNameTable[35] = "Windows.Foundation.Collections.IObservableVector`1<Windows.UI.Xaml.Controls.ICommandBarElement>";
+            _typeNameTable[36] = "Windows.UI.Xaml.Controls.ICommandBarElement";
+            _typeNameTable[37] = "WIn11.MainPage";
+            _typeNameTable[38] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[39] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[40] = "Microsoft.UI.Xaml.Controls.IconSource";
+            _typeNameTable[41] = "Windows.UI.Xaml.Media.Brush";
+            _typeNameTable[42] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[43] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[44] = "Int32";
 
-            _typeTable = new global::System.Type[36];
+            _typeTable = new global::System.Type[45];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -290,14 +299,23 @@ namespace Notes.Notes_XamlTypeInfo
             _typeTable[25] = typeof(global::System.String);
             _typeTable[26] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
             _typeTable[27] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
-            _typeTable[28] = typeof(global::WIn11.MainPage);
-            _typeTable[29] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[30] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[31] = typeof(global::Microsoft.UI.Xaml.Controls.IconSource);
-            _typeTable[32] = typeof(global::Windows.UI.Xaml.Media.Brush);
-            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[34] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[35] = typeof(global::System.Int32);
+            _typeTable[28] = typeof(global::Microsoft.UI.Xaml.Controls.MenuBar);
+            _typeTable[29] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.MenuBarItem>);
+            _typeTable[30] = typeof(global::Microsoft.UI.Xaml.Controls.MenuBarItem);
+            _typeTable[31] = typeof(global::System.Collections.Generic.IList<global::Windows.UI.Xaml.Controls.MenuFlyoutItemBase>);
+            _typeTable[32] = typeof(global::Windows.UI.Xaml.Controls.MenuFlyoutItemBase);
+            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.CommandBarFlyout);
+            _typeTable[34] = typeof(global::Windows.UI.Xaml.Controls.Primitives.FlyoutBase);
+            _typeTable[35] = typeof(global::Windows.Foundation.Collections.IObservableVector<global::Windows.UI.Xaml.Controls.ICommandBarElement>);
+            _typeTable[36] = typeof(global::Windows.UI.Xaml.Controls.ICommandBarElement);
+            _typeTable[37] = typeof(global::WIn11.MainPage);
+            _typeTable[38] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[39] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[40] = typeof(global::Microsoft.UI.Xaml.Controls.IconSource);
+            _typeTable[41] = typeof(global::Windows.UI.Xaml.Media.Brush);
+            _typeTable[42] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[43] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[44] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -335,8 +353,11 @@ namespace Notes.Notes_XamlTypeInfo
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
         private object Activate_10_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
         private object Activate_27_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
-        private object Activate_28_MainPage() { return new global::WIn11.MainPage(); }
-        private object Activate_33_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_28_MenuBar() { return new global::Microsoft.UI.Xaml.Controls.MenuBar(); }
+        private object Activate_30_MenuBarItem() { return new global::Microsoft.UI.Xaml.Controls.MenuBarItem(); }
+        private object Activate_33_CommandBarFlyout() { return new global::Microsoft.UI.Xaml.Controls.CommandBarFlyout(); }
+        private object Activate_37_MainPage() { return new global::WIn11.MainPage(); }
+        private object Activate_42_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -350,7 +371,25 @@ namespace Notes.Notes_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_34_IList(object instance, object item)
+        private void VectorAdd_29_IList(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.MenuBarItem>)instance;
+            var newItem = (global::Microsoft.UI.Xaml.Controls.MenuBarItem)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_31_IList(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.Controls.MenuFlyoutItemBase>)instance;
+            var newItem = (global::Windows.UI.Xaml.Controls.MenuFlyoutItemBase)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_35_IObservableVector(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.Controls.ICommandBarElement>)instance;
+            var newItem = (global::Windows.UI.Xaml.Controls.ICommandBarElement)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_43_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -558,35 +597,95 @@ namespace Notes.Notes_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 28:   //  WIn11.MainPage
+            case 28:   //  Microsoft.UI.Xaml.Controls.MenuBar
+                userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
+                userType.Activator = Activate_28_MenuBar;
+                userType.SetContentPropertyName("Microsoft.UI.Xaml.Controls.MenuBar.Items");
+                userType.AddMemberName("Items");
+                xamlType = userType;
+                break;
+
+            case 29:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.MenuBarItem>
+                userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.CollectionAdd = VectorAdd_29_IList;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 30:   //  Microsoft.UI.Xaml.Controls.MenuBarItem
+                userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
+                userType.Activator = Activate_30_MenuBarItem;
+                userType.SetContentPropertyName("Microsoft.UI.Xaml.Controls.MenuBarItem.Items");
+                userType.AddMemberName("Items");
+                userType.AddMemberName("Title");
+                xamlType = userType;
+                break;
+
+            case 31:   //  System.Collections.Generic.IList`1<Windows.UI.Xaml.Controls.MenuFlyoutItemBase>
+                userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.CollectionAdd = VectorAdd_31_IList;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 32:   //  Windows.UI.Xaml.Controls.MenuFlyoutItemBase
+                xamlType = new global::Notes.Notes_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 33:   //  Microsoft.UI.Xaml.Controls.CommandBarFlyout
+                userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Primitives.FlyoutBase"));
+                userType.Activator = Activate_33_CommandBarFlyout;
+                userType.SetContentPropertyName("Microsoft.UI.Xaml.Controls.CommandBarFlyout.PrimaryCommands");
+                userType.AddMemberName("PrimaryCommands");
+                userType.AddMemberName("SecondaryCommands");
+                userType.AddMemberName("AlwaysExpanded");
+                xamlType = userType;
+                break;
+
+            case 34:   //  Windows.UI.Xaml.Controls.Primitives.FlyoutBase
+                xamlType = new global::Notes.Notes_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 35:   //  Windows.Foundation.Collections.IObservableVector`1<Windows.UI.Xaml.Controls.ICommandBarElement>
+                userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.CollectionAdd = VectorAdd_35_IObservableVector;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 36:   //  Windows.UI.Xaml.Controls.ICommandBarElement
+                xamlType = new global::Notes.Notes_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 37:   //  WIn11.MainPage
                 userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_28_MainPage;
+                userType.Activator = Activate_37_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 29:   //  Windows.UI.Xaml.Controls.Page
+            case 38:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::Notes.Notes_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 30:   //  Windows.UI.Xaml.Controls.UserControl
+            case 39:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::Notes.Notes_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 31:   //  Microsoft.UI.Xaml.Controls.IconSource
+            case 40:   //  Microsoft.UI.Xaml.Controls.IconSource
                 userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.AddMemberName("Foreground");
                 userType.SetIsBindable();
                 xamlType = userType;
                 break;
 
-            case 32:   //  Windows.UI.Xaml.Media.Brush
+            case 41:   //  Windows.UI.Xaml.Media.Brush
                 xamlType = new global::Notes.Notes_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 33:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 42:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_33_TreeViewNode;
+                userType.Activator = Activate_42_TreeViewNode;
                 userType.AddMemberName("IsExpanded");
                 userType.AddMemberName("HasUnrealizedChildren");
                 userType.AddMemberName("Content");
@@ -598,14 +697,14 @@ namespace Notes.Notes_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 34:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 43:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::Notes.Notes_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_34_IList;
+                userType.CollectionAdd = VectorAdd_43_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 35:   //  Int32
+            case 44:   //  Int32
                 xamlType = new global::Notes.Notes_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -1030,62 +1129,102 @@ namespace Notes.Notes_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.TemplateSettings;
         }
-        private object get_39_IconSource_Foreground(object instance)
+        private object get_39_MenuBar_Items(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.MenuBar)instance;
+            return that.Items;
+        }
+        private object get_40_MenuBarItem_Items(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.MenuBarItem)instance;
+            return that.Items;
+        }
+        private object get_41_MenuBarItem_Title(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.MenuBarItem)instance;
+            return that.Title;
+        }
+        private void set_41_MenuBarItem_Title(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.MenuBarItem)instance;
+            that.Title = (global::System.String)Value;
+        }
+        private object get_42_CommandBarFlyout_PrimaryCommands(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.CommandBarFlyout)instance;
+            return that.PrimaryCommands;
+        }
+        private object get_43_CommandBarFlyout_SecondaryCommands(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.CommandBarFlyout)instance;
+            return that.SecondaryCommands;
+        }
+        private object get_44_CommandBarFlyout_AlwaysExpanded(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.CommandBarFlyout)instance;
+            return that.AlwaysExpanded;
+        }
+        private void set_44_CommandBarFlyout_AlwaysExpanded(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.CommandBarFlyout)instance;
+            that.AlwaysExpanded = (global::System.Boolean)Value;
+        }
+        private object get_45_IconSource_Foreground(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.IconSource)instance;
             return that.Foreground;
         }
-        private void set_39_IconSource_Foreground(object instance, object Value)
+        private void set_45_IconSource_Foreground(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.IconSource)instance;
             that.Foreground = (global::Windows.UI.Xaml.Media.Brush)Value;
         }
-        private object get_40_TreeViewNode_IsExpanded(object instance)
+        private object get_46_TreeViewNode_IsExpanded(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.IsExpanded;
         }
-        private void set_40_TreeViewNode_IsExpanded(object instance, object Value)
+        private void set_46_TreeViewNode_IsExpanded(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.IsExpanded = (global::System.Boolean)Value;
         }
-        private object get_41_TreeViewNode_HasUnrealizedChildren(object instance)
+        private object get_47_TreeViewNode_HasUnrealizedChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasUnrealizedChildren;
         }
-        private void set_41_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
+        private void set_47_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.HasUnrealizedChildren = (global::System.Boolean)Value;
         }
-        private object get_42_TreeViewNode_Content(object instance)
+        private object get_48_TreeViewNode_Content(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Content;
         }
-        private void set_42_TreeViewNode_Content(object instance, object Value)
+        private void set_48_TreeViewNode_Content(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.Content = (global::System.Object)Value;
         }
-        private object get_43_TreeViewNode_Children(object instance)
+        private object get_49_TreeViewNode_Children(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Children;
         }
-        private object get_44_TreeViewNode_Depth(object instance)
+        private object get_50_TreeViewNode_Depth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Depth;
         }
-        private object get_45_TreeViewNode_HasChildren(object instance)
+        private object get_51_TreeViewNode_HasChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasChildren;
         }
-        private object get_46_TreeViewNode_Parent(object instance)
+        private object get_52_TreeViewNode_Parent(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Parent;
@@ -1373,57 +1512,96 @@ namespace Notes.Notes_XamlTypeInfo
                 xamlMember.Getter = get_38_NavigationView_TemplateSettings;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "Microsoft.UI.Xaml.Controls.MenuBar.Items":
+                userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.MenuBar");
+                xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Items", "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.MenuBarItem>");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_39_MenuBar_Items;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.MenuBarItem.Items":
+                userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.MenuBarItem");
+                xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Items", "System.Collections.Generic.IList`1<Windows.UI.Xaml.Controls.MenuFlyoutItemBase>");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_40_MenuBarItem_Items;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.MenuBarItem.Title":
+                userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.MenuBarItem");
+                xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Title", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_41_MenuBarItem_Title;
+                xamlMember.Setter = set_41_MenuBarItem_Title;
+                break;
+            case "Microsoft.UI.Xaml.Controls.CommandBarFlyout.PrimaryCommands":
+                userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.CommandBarFlyout");
+                xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "PrimaryCommands", "Windows.Foundation.Collections.IObservableVector`1<Windows.UI.Xaml.Controls.ICommandBarElement>");
+                xamlMember.Getter = get_42_CommandBarFlyout_PrimaryCommands;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.CommandBarFlyout.SecondaryCommands":
+                userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.CommandBarFlyout");
+                xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "SecondaryCommands", "Windows.Foundation.Collections.IObservableVector`1<Windows.UI.Xaml.Controls.ICommandBarElement>");
+                xamlMember.Getter = get_43_CommandBarFlyout_SecondaryCommands;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.CommandBarFlyout.AlwaysExpanded":
+                userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.CommandBarFlyout");
+                xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "AlwaysExpanded", "Boolean");
+                xamlMember.Getter = get_44_CommandBarFlyout_AlwaysExpanded;
+                xamlMember.Setter = set_44_CommandBarFlyout_AlwaysExpanded;
+                break;
             case "Microsoft.UI.Xaml.Controls.IconSource.Foreground":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.IconSource");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Foreground", "Windows.UI.Xaml.Media.Brush");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_39_IconSource_Foreground;
-                xamlMember.Setter = set_39_IconSource_Foreground;
+                xamlMember.Getter = get_45_IconSource_Foreground;
+                xamlMember.Setter = set_45_IconSource_Foreground;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.IsExpanded":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "IsExpanded", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_40_TreeViewNode_IsExpanded;
-                xamlMember.Setter = set_40_TreeViewNode_IsExpanded;
+                xamlMember.Getter = get_46_TreeViewNode_IsExpanded;
+                xamlMember.Setter = set_46_TreeViewNode_IsExpanded;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasUnrealizedChildren":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
-                xamlMember.Getter = get_41_TreeViewNode_HasUnrealizedChildren;
-                xamlMember.Setter = set_41_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Getter = get_47_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Setter = set_47_TreeViewNode_HasUnrealizedChildren;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Content":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Content", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_42_TreeViewNode_Content;
-                xamlMember.Setter = set_42_TreeViewNode_Content;
+                xamlMember.Getter = get_48_TreeViewNode_Content;
+                xamlMember.Setter = set_48_TreeViewNode_Content;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Children":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Children", "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>");
-                xamlMember.Getter = get_43_TreeViewNode_Children;
+                xamlMember.Getter = get_49_TreeViewNode_Children;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Depth":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Depth", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_44_TreeViewNode_Depth;
+                xamlMember.Getter = get_50_TreeViewNode_Depth;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasChildren":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "HasChildren", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_45_TreeViewNode_HasChildren;
+                xamlMember.Getter = get_51_TreeViewNode_HasChildren;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Parent":
                 userType = (global::Notes.Notes_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::Notes.Notes_XamlTypeInfo.XamlMember(this, "Parent", "Microsoft.UI.Xaml.Controls.TreeViewNode");
-                xamlMember.Getter = get_46_TreeViewNode_Parent;
+                xamlMember.Getter = get_52_TreeViewNode_Parent;
                 xamlMember.SetIsReadOnly();
                 break;
             }

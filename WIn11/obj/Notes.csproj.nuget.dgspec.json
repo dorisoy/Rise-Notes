@@ -51,9 +51,9 @@
               "target": "Package",
               "version": "[5.0.2, )"
             },
-            "System.IO": {
+            "Win2D.uwp": {
               "target": "Package",
-              "version": "[4.3.0, )"
+              "version": "[1.26.0, )"
             }
           },
           "imports": [

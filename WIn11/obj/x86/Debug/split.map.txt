@@ -1,6 +1,6 @@
 ﻿[ResourceMetadata]
 "ResourceDimensions"		"scale-200"
-"ResourceDimensions"		"language-it-it"
+"ResourceDimensions"		"language-en"
 
 [Files]
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\split.pri"			"resources.pri"
@@ -30,4 +30,6 @@
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\SmallTile.scale-200.png"			"Assets\SmallTile.scale-200.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\LockScreenLogo.scale-200.png"			"Assets\LockScreenLogo.scale-200.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\LargeTile.scale-200.png"			"Assets\LargeTile.scale-200.png"
+"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\iconus.png"			"Assets\iconus.png"
+"C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\icon.png"			"Assets\icon.png"
 "C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\PackageLayout\Assets\BadgeLogo.scale-200.png"			"Assets\BadgeLogo.scale-200.png"

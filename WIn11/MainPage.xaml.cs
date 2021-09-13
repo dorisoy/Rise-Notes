@@ -26,7 +26,7 @@ using System.Windows;
 using Microsoft.UI.Xaml.Controls;
 using Windows.Storage.Streams;
 using Windows.UI.Text;
-
+using Windows.ApplicationModel.Activation;
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
 namespace WIn11
@@ -69,24 +69,29 @@ namespace WIn11
 
                 if (changed == true)
                 {
-
-                    ContentDialog saveDialog = new ContentDialog
+                    try
                     {
-                        Title = "Exit without saving the edits?",
-                        Content = "Are you sure you want to exit without saving your progress?",
-                        CloseButtonText = "No",
-                        SecondaryButtonText = "Yes",
-                        DefaultButton = ContentDialogButton.Close
-                    };
-
-                    var result = await saveDialog.ShowAsync();
-                    if (result == ContentDialogResult.Secondary)
-                    {
-                        Application.Current.Exit();
+                        ContentDialog saveDialog = new ContentDialog
+                        {
+                            Title = "Exit without saving the edits?",
+                            Content = "Are you sure you want to exit without saving your progresses?",
+                            PrimaryButtonText = "Save",
+                            SecondaryButtonText = "Exit",
+                            CloseButtonText = "Cancel",
+                            DefaultButton = ContentDialogButton.Primary
+                        };
+                        var result = await saveDialog.ShowAsync();
+                        if (result == ContentDialogResult.Secondary)
+                        {
+                            Application.Current.Exit();
+                        }
+                        if (result == ContentDialogResult.Primary)
+                        {
+                            SaveExit();
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        SaveExit();
 
                     }
                 }
@@ -115,7 +120,7 @@ namespace WIn11
             coreTitleBar.IsVisibleChanged += CoreTitleBar_IsVisibleChanged;
 
             //Register a handler for when the window changes focus
-            Window.Current.Activated += Current_Activated;
+            Window.Current.Activated += Current_Activated;            
         }
 
 
@@ -238,8 +243,9 @@ namespace WIn11
                     ContentDialog errorDialog = new ContentDialog()
                     {
                         Title = "File open error",
-                        Content = "Sorry, I couldn't open the file.",
-                        PrimaryButtonText = "Ok"
+                        Content = "Sorry, Something went wrong...",
+                        PrimaryButtonText = "Ok",
+                        DefaultButton = ContentDialogButton.Primary
                     };
                     await errorDialog.ShowAsync();
                 }
@@ -258,15 +264,15 @@ namespace WIn11
             savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
 
+            
             savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-
+            savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
 
             savePicker.SuggestedFileName = "New Document";
 
             StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
             {
-
                 CachedFileManager.DeferUpdates(file);
 
                 using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
@@ -283,7 +289,6 @@ namespace WIn11
                         new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
                     await errorBox.ShowAsync();
                 }
-                
             }
 
             changed = false;
@@ -313,7 +318,7 @@ namespace WIn11
 
 
             savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-
+            savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
 
             savePicker.SuggestedFileName = "New Document";
 
@@ -360,7 +365,8 @@ namespace WIn11
                 Title = title,
                 IsSecondaryButtonEnabled = true,
                 PrimaryButtonText = "Ok",
-                SecondaryButtonText = "Cancel"
+                SecondaryButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary
             };
             if (await dialog.ShowAsync() == ContentDialogResult.Primary)
                 return inputTextBox.Text;
@@ -378,7 +384,7 @@ namespace WIn11
             ContentDialog AboutDialog = new ContentDialog
             {
                 Title = "Notes",
-                Content = "Beta 0.3",
+                Content = "Beta 0.4",
                 CloseButtonText = "Ok!",
                 DefaultButton = ContentDialogButton.Close
             };
@@ -411,6 +417,12 @@ namespace WIn11
             Thickness marginEdit = Edit.Margin;
             Edit.Margin = marginEdit;
             marginEdit.Left = 33;
+            menuBar.HorizontalAlignment = HorizontalAlignment.Left;
+            Thickness marginMenu = menuBar.Margin;
+            marginMenu.Top = 41;
+            menuBar.Margin = marginMenu;
+            ful.Text = "Full Screen";
+            ful.Icon = new SymbolIcon(Symbol.FullScreen);
         }
         private async void standardModeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -426,58 +438,106 @@ namespace WIn11
             AppFontIcon.Visibility = Visibility.Visible;
         }
 
+        
+
+
+
+        public async Task<string> GetFileText(string filePath)
+        {
+            var stringContent = "";
+            
+                var file = await StorageFile.GetFileFromPathAsync(filePath);
+
+                if (file != null)
+                {
+                    stringContent = await Windows.Storage.FileIO.ReadTextAsync(file, Windows.Storage.Streams.UnicodeEncoding.Utf8);
+                }
+            
+            
+
+            return stringContent;
+        }
+
+        bool printingAct = false;
+
         private PrintManager printMan;
         private PrintDocument printDoc;
         private IPrintDocumentSource printDocSource;
 
         #region Register for printing
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            // Register for PrintTaskRequested event
-            printMan = PrintManager.GetForCurrentView();
-            printMan.PrintTaskRequested += PrintTaskRequested;
+            if (printingAct == true)
+            {
+                printMan = PrintManager.GetForCurrentView();
+                printMan.PrintTaskRequested += PrintTaskRequested;
 
-            // Build a PrintDocument and register for callbacks
-            printDoc = new PrintDocument();
-            printDocSource = printDoc.DocumentSource;
-            printDoc.Paginate += Paginate;
-            printDoc.GetPreviewPage += GetPreviewPage;
-            printDoc.AddPages += AddPages;
+                printDoc = new PrintDocument();
+                printDocSource = printDoc.DocumentSource;
+                printDoc.Paginate += Paginate;
+                printDoc.GetPreviewPage += GetPreviewPage;
+                printDoc.AddPages += AddPages;
+            }
+            else
+            {
+                base.OnNavigatedTo(e);
+                var args = e.Parameter as FileActivatedEventArgs;
+
+                if (args != null)
+                {
+                    if (args.Kind == Windows.ApplicationModel.Activation.ActivationKind.File)
+                    {
+                        string strFileName = args.Files[0].Name;
+                        string strFile = args.Files[0].Path;
+                        if (args.Files != null)
+                        {
+                            var text = await GetFileText(@strFile);
+
+                            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+                            appView.Title = strFileName;
+                            txt.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
+                            changed = false;
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
 
         #region Showing the print dialog
 
-        private async void PrintButtonClick(object sender, RoutedEventArgs e)
+        private void PrintButton(object sender, RoutedEventArgs e)
         {
+            printingAct = true;
+            PrintButtonClick();
+        }
+    private async void PrintButtonClick()
+        {
+            
             if (PrintManager.IsSupported())
             {
                 try
                 {
-                    // Show print UI
                     await PrintManager.ShowPrintUIAsync();
-
                     txt.Foreground = new SolidColorBrush(Colors.Black);
-
-
                 }
                 catch
                 {
-                    // Printing cannot proceed at this time
+                    
                     ContentDialog noPrintingDialog = new ContentDialog()
                     {
                         Title = "Printing error",
-                        Content = "Ooops... Try Again later",
+                        Content = "Printing Is Currently Unavailable...",
                         PrimaryButtonText = "OK"
                     };
                     await noPrintingDialog.ShowAsync();
                 }
+
             }
             else
             {
-                // Printing is not supported on this device
                 ContentDialog noPrintingDialog = new ContentDialog()
                 {
                     Title = "Printing not supported",
@@ -490,14 +550,11 @@ namespace WIn11
 
         private void PrintTaskRequested(PrintManager sender, PrintTaskRequestedEventArgs args)
         {
-            // Create the PrintTask.
-            // Defines the title and delegate for PrintTaskSourceRequested
             var printTask = args.Request.CreatePrintTask("Print", PrintTaskSourceRequrested);
             {
                 IList<string> displayedOptions = printTask.Options.DisplayedOptions;
             }
             
-            // Handle PrintTask.Completed to catch failed print jobs
             printTask.Completed += PrintTaskCompleted;
 
 
@@ -505,7 +562,6 @@ namespace WIn11
 
         private void PrintTaskSourceRequrested(PrintTaskSourceRequestedArgs args)
         {
-            // Set the document source.
             args.SetSource(printDocSource);
         }
 
@@ -515,13 +571,11 @@ namespace WIn11
 
         private void Paginate(object sender, PaginateEventArgs e)
         {
-            // As I only want to print one Rectangle, so I set the count to 1
             printDoc.SetPreviewPageCount(1, PreviewPageCountType.Final);
         }
 
         private void GetPreviewPage(object sender, GetPreviewPageEventArgs e)
         {
-            // Provide a UIElement as the print preview.
             printDoc.SetPreviewPage(e.PageNumber, txt);
         }
 
@@ -533,7 +587,6 @@ namespace WIn11
         {
             printDoc.AddPage(txt);
 
-            // Indicate that all of the print pages have been provided
             printDoc.AddPagesComplete();
         }
 
@@ -594,7 +647,7 @@ namespace WIn11
                 ful.Icon = new SymbolIcon(Symbol.FullScreen);
                 menuBar.HorizontalAlignment = HorizontalAlignment.Left;
                 Thickness margin = menuBar.Margin;
-                margin.Top = 37;
+                margin.Top = 41;
                 menuBar.Margin = margin;
             }
             else
@@ -604,7 +657,7 @@ namespace WIn11
                 ful.Icon = new SymbolIcon(Symbol.BackToWindow);
                 menuBar.HorizontalAlignment = HorizontalAlignment.Center;
                 Thickness margin = menuBar.Margin;
-                margin.Top = 5;
+                margin.Top = 7;
                 menuBar.Margin = margin;
             }
         }
@@ -624,7 +677,8 @@ namespace WIn11
                 Title = "What Are You Searching?",
                 IsSecondaryButtonEnabled = true,
                 PrimaryButtonText = "Search",
-                SecondaryButtonText = "Cancel"
+                SecondaryButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary
             };
             if (await dialog.ShowAsync() == ContentDialogResult.Primary)
             {
@@ -671,6 +725,7 @@ namespace WIn11
             ITextRange documentRange = txt.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = new SolidColorBrush(Colors.Transparent);
             SolidColorBrush defaultForeground = txt.Foreground as SolidColorBrush;
+            
 
             if (background != null)
             {
@@ -690,9 +745,9 @@ namespace WIn11
 
         private void txt_TextChanged(object sender, RoutedEventArgs e)
         {
-            string emn = txt.ToString();
-           
-            if (emn == string.Empty)
+            RichEditBox richemp = new RichEditBox();
+            printingAct = false;
+            if (txt.Document == richemp.Document)
             {
                 changed = false;
             }
@@ -713,6 +768,7 @@ namespace WIn11
             
             
         }
+            
     }
     
 }

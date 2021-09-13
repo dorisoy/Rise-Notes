@@ -28,6 +28,16 @@
 						<Value>Assets\BadgeLogo.scale-200.png</Value>
 					</Candidate>
 				</NamedResource>
+				<NamedResource name="icon.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/icon.png">
+					<Candidate type="Path">
+						<Value>Assets\icon.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="iconus.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/iconus.png">
+					<Candidate type="Path">
+						<Value>Assets\iconus.png</Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="LargeTile.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/LargeTile.png">
 					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
 						<Value>Assets\LargeTile.scale-200.png</Value>

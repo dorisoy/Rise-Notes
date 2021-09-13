@@ -34,6 +34,12 @@
     <AppxPackagedFile Include="C:\Users\black\.nuget\packages\system.drawing.common\5.0.2\lib\netstandard2.0\System.Drawing.Common.dll">
       <PackagePath>System.Drawing.Common.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\black\.nuget\packages\win2d.uwp\1.26.0\runtimes\win10-x86\native\Microsoft.Graphics.Canvas.dll">
+      <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\black\.nuget\packages\win2d.uwp\1.26.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
+      <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
@@ -56,6 +62,12 @@
     <AppxPackagedFile Include="C:\Users\black\Source\Repos\Notes-Git\WIn11\Assets\BadgeLogo.scale-400.png">
       <PackagePath>Assets\BadgeLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\black\Source\Repos\Notes-Git\WIn11\Assets\icon.png">
+      <PackagePath>Assets\icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\black\Source\Repos\Notes-Git\WIn11\Assets\iconus.png">
+      <PackagePath>Assets\iconus.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\black\Source\Repos\Notes-Git\WIn11\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>

@@ -8,7 +8,7 @@
   </packaging>
   <index root="\" startIndexAt="C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\resources.pri">
     <default>
-      <qualifier name="Language" value="it-IT" />
+      <qualifier name="Language" value="en" />
       <qualifier name="Contrast" value="standard" />
       <qualifier name="Scale" value="200" />
       <qualifier name="HomeRegion" value="001" />
