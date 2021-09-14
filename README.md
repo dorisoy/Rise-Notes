@@ -1,5 +1,11 @@
 # Notes
+
+![IconReadme](https://user-images.githubusercontent.com/86930621/133277610-fd6f821b-a787-4f12-ac66-fabf8f9b9a35.png)
+
+
 WinUI UWP Based Notepad created on VS2019
+
+
 
 ![immagine](https://user-images.githubusercontent.com/86930621/128529696-67e72383-7f5f-45e6-8f6a-bad237643010.png)
 
