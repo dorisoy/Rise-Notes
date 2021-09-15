@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="Notes.GreetingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Notes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" MinWidth="1000" MinHeight="500">
+
+    <Grid MinWidth="1000" MinHeight="500">
+        <Grid CornerRadius="10,10,10,10" Margin="0,10,0,10">
+            <Image HorizontalAlignment="Center" Height="100" Margin="0,110,0,0" VerticalAlignment="Top" Width="250" Source="/Assets/IconReadme.png"/>
+            <TextBlock HorizontalAlignment="Left" Margin="85,320,0,0" x:Uid="Welcome" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}" FontWeight="Bold" TextDecorations="None"/>
+            <TextBlock HorizontalAlignment="Left" Margin="85,383,0,0" x:Uid="WelDesc" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"/>
+            <Button x:Uid="Continue" FontSize="18" CornerRadius="6,6,6,6" Margin="84,0,0,73" VerticalAlignment="Bottom" Background="{ThemeResource SystemAccentColorDark1}" Foreground="White" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="#F6FFFFFF" Click="Button_Click" Height="40" BorderBrush="#7F8E8CD8" Padding="19,5,19,6" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+            <Button Content="GitHub" Width="122" FontSize="18" CornerRadius="6,6,6,6" Margin="229,0,0,73" VerticalAlignment="Bottom" Background="#19FFFFFF" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}" Click="Button_Click_1" Height="40" Padding="7,5,7,6">
+                <Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#18B0B0B0" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.BorderBrush>
+            </Button>
+            <TextBlock x:Name="gb" Margin="0,0,81,84" x:Uid="FileAssoc" TextWrapping="Wrap" FontSize="18" Foreground="{ThemeResource SystemAccentColor}" HorizontalAlignment="Right" Height="27" VerticalAlignment="Bottom" FontWeight="Normal" TextDecorations="None" Tapped="gb_SelectionChanged"/>
+        </Grid>
+
+    </Grid>
+</Page>

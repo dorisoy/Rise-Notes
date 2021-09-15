@@ -9,7 +9,7 @@
     <SolutionConfiguration>Debug|x64</SolutionConfiguration>
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>35c52142-9b91-4581-8bf3-4418b913ff96</PackageIdentityName>
-    <PackageIdentityPublisher>CN=Blackdev9</PackageIdentityPublisher>
+    <PackageIdentityPublisher>CN=BlackDev9</PackageIdentityPublisher>
     <IntermediateOutputPath>C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
@@ -65,6 +65,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\black\Source\Repos\Notes-Git\WIn11\Assets\icon.png">
       <PackagePath>Assets\icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\black\Source\Repos\Notes-Git\WIn11\Assets\IconReadme.png">
+      <PackagePath>Assets\IconReadme.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\black\Source\Repos\Notes-Git\WIn11\Assets\iconus.png">
       <PackagePath>Assets\iconus.png</PackagePath>

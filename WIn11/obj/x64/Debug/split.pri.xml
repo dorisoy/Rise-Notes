@@ -3,11 +3,17 @@
 	<ResourceMap name="35c52142-9b91-4581-8bf3-4418b913ff96" version="1.0" primary="true">
 		<Qualifiers>
 			<AlternateForm>LIGHTUNPLATED,UNPLATED</AlternateForm>
+			<Language>EN-US</Language>
 			<Scale>200</Scale>
 			<TargetSize>256,16,24,32,48</TargetSize>
 		</Qualifiers>
 		<ResourceMapSubtree name="Files">
 			<NamedResource name="App.xbf" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/App.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="GreetingsPage.xbf" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/GreetingsPage.xbf">
 				<Candidate type="EmbeddedData">
 					<Base64Value>[Embedded Binary Data]</Base64Value>
 				</Candidate>
@@ -31,6 +37,11 @@
 				<NamedResource name="icon.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/icon.png">
 					<Candidate type="Path">
 						<Value>Assets\icon.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="IconReadme.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/IconReadme.png">
+					<Candidate type="Path">
+						<Value>Assets\IconReadme.png</Value>
 					</Candidate>
 				</NamedResource>
 				<NamedResource name="iconus.png" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Files/Assets/iconus.png">
@@ -634,6 +645,177 @@
 					<Value>Parameter must be positive and &lt; Height.</Value>
 				</Candidate>
 			</NamedResource>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Resources">
+			<NamedResource name="Exit" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Exit">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Exit</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ExitDesc" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/ExitDesc">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Are you sure you want to exit without saving your progresses?</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ExitSav" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/ExitSav">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Wait... before you go</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="FileDesc" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/FileDesc">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Sorry, Something went wrong!</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="FileError" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/FileError">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>File Error</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="PrintError" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/PrintError">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Your device Is incompatible with Printing</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="SaveExitFile" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/SaveExitFile">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Save</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="SearchButton" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/SearchButton">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Search</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="SearchQuest" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/SearchQuest">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>What Are You Searching?</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Stop" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Stop">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Cancel</Value>
+				</Candidate>
+			</NamedResource>
+			<ResourceMapSubtree name="About">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/About/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>About Notes</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="AudioActivated">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/AudioActivated/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Audio Activated</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="AudioDeactivated">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/AudioDeactivated/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Audio Deactivated</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Continue">
+				<NamedResource name="Content" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Continue/Content">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Continue</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="EditText">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/EditText/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Edited</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="FileAssoc">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/FileAssoc/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>How to make File Association avaiable</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="FullScreen">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/FullScreen/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Full Screen Mode</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="New">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/New/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>New</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Open">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Open/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Open</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="PIP">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/PIP/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Switch to PiP</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="PrintText">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/PrintText/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Print</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="SaveFile">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/SaveFile/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Save</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Search">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Search/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Search</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="VisualButtonText">
+				<NamedResource name="Title" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/VisualButtonText/Title">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>View</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Welcome">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Welcome/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Welcome to Notes!</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="WelDesc">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/WelDesc/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>This App is OpenSource so feel free to visit the Repository on GitHub!</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Window">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Window/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Window Mode</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
 		</ResourceMapSubtree>
 	</ResourceMap>
 </PriInfo>

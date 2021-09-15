@@ -7,7 +7,7 @@
 
     Per ulteriori informazioni sui file manifesto di pacchetto, vedere http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="35c52142-9b91-4581-8bf3-4418b913ff96" Publisher="CN=Blackdev9" Version="0.4.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="35c52142-9b91-4581-8bf3-4418b913ff96" Publisher="CN=BlackDev9" Version="0.5.4.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="35c52142-9b91-4581-8bf3-4418b913ff96" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Notes</DisplayName>
@@ -22,7 +22,9 @@
     <PackageDependency Name="Microsoft.VCLibs.140.00.Debug" MinVersion="14.0.29231.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
   </Dependencies>
   <Resources>
-    <Resource Language="EN" />
+    <Resource Language="EN-US" />
+    <Resource Language="IT-IT" />
+    <Resource Language="RU-RU" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="Notes.exe" EntryPoint="Notes.App">

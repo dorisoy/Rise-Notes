@@ -1,5 +1,7 @@
-MainPackage=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.4.0.0_x64_Debug.msix
-ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.4.0.0_scale-100.msix
-ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.4.0.0_scale-125.msix
-ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.4.0.0_scale-150.msix
-ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.4.0.0_scale-400.msix
+MainPackage=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.5.4.0_x64_Debug.msix
+ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.5.4.0_language-it.msix
+ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.5.4.0_language-ru.msix
+ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.5.4.0_scale-100.msix
+ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.5.4.0_scale-125.msix
+ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.5.4.0_scale-150.msix
+ResourcePack=C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x64\Debug\Notes_0.5.4.0_scale-400.msix

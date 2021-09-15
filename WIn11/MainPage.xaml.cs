@@ -44,11 +44,8 @@ namespace WIn11
 
         public MainPage()
         {
-
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             this.InitializeComponent();
-
-            ElementSoundPlayer.State = ElementSoundPlayerState.On;
-            ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
 
             var view = ApplicationView.GetForCurrentView();
             
@@ -73,11 +70,11 @@ namespace WIn11
                     {
                         ContentDialog saveDialog = new ContentDialog
                         {
-                            Title = "Exit without saving the edits?",
-                            Content = "Are you sure you want to exit without saving your progresses?",
-                            PrimaryButtonText = "Save",
-                            SecondaryButtonText = "Exit",
-                            CloseButtonText = "Cancel",
+                            Title = resourceLoader.GetString("ExitSav"),
+                            Content = resourceLoader.GetString("ExitDesc"),
+                            PrimaryButtonText = resourceLoader.GetString("SaveExitFile"),
+                            SecondaryButtonText = resourceLoader.GetString("Exit"),
+                            CloseButtonText = resourceLoader.GetString("Stop"),
                             DefaultButton = ContentDialogButton.Primary
                         };
                         var result = await saveDialog.ShowAsync();
@@ -120,7 +117,7 @@ namespace WIn11
             coreTitleBar.IsVisibleChanged += CoreTitleBar_IsVisibleChanged;
 
             //Register a handler for when the window changes focus
-            Window.Current.Activated += Current_Activated;            
+            Window.Current.Activated += Current_Activated;
         }
 
 
@@ -216,7 +213,7 @@ namespace WIn11
         private async void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
             var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
-
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             Windows.Storage.Pickers.FileOpenPicker open =
                 new Windows.Storage.Pickers.FileOpenPicker();
             open.SuggestedStartLocation =
@@ -242,8 +239,8 @@ namespace WIn11
                 {
                     ContentDialog errorDialog = new ContentDialog()
                     {
-                        Title = "File open error",
-                        Content = "Sorry, Something went wrong...",
+                        Title = resourceLoader.GetString("FileError"),
+                        Content = resourceLoader.GetString("FileDesc"),
                         PrimaryButtonText = "Ok",
                         DefaultButton = ContentDialogButton.Primary
                     };
@@ -352,31 +349,39 @@ namespace WIn11
         private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
         {
             Save();
-
         }
 
         public static async Task<string> ShowAddDialogAsync(string title)
         {
             var inputTextBox = new TextBox { AcceptsReturn = false };
             (inputTextBox as FrameworkElement).VerticalAlignment = VerticalAlignment.Bottom;
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             var dialog = new ContentDialog
             {
                 Content = inputTextBox,
                 Title = title,
                 IsSecondaryButtonEnabled = true,
                 PrimaryButtonText = "Ok",
-                SecondaryButtonText = "Cancel",
+                SecondaryButtonText = resourceLoader.GetString("Stop"),
                 DefaultButton = ContentDialogButton.Primary
             };
             if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+
                 return inputTextBox.Text;
             else
-                return "Segoe UI";
+                return "u";
         }
 
         private async void MenuFlyoutItem_Click_3(object sender, RoutedEventArgs e)
         {
-            txt.FontFamily = new FontFamily(await ShowAddDialogAsync("Font"));
+            try
+            {
+                txt.FontFamily = new FontFamily(await ShowAddDialogAsync("Font"));
+            }
+            catch
+            {
+
+            }
         }
 
         private async void MenuFlyoutItem_Click_4(object sender, RoutedEventArgs e)
@@ -384,7 +389,7 @@ namespace WIn11
             ContentDialog AboutDialog = new ContentDialog
             {
                 Title = "Notes",
-                Content = "Beta 0.4",
+                Content = "PreRelease 0.5.4",
                 CloseButtonText = "Ok!",
                 DefaultButton = ContentDialogButton.Close
             };
@@ -404,6 +409,7 @@ namespace WIn11
 
         private async void compactOverlayButton_Click(object sender, RoutedEventArgs e)
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             ViewModePreferences compactOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
             compactOptions.CustomSize = new Windows.Foundation.Size(320, 330);
             bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
@@ -421,7 +427,7 @@ namespace WIn11
             Thickness marginMenu = menuBar.Margin;
             marginMenu.Top = 41;
             menuBar.Margin = marginMenu;
-            ful.Text = "Full Screen";
+            ful.Text = resourceLoader.GetString("FullScreen/Text");
             ful.Icon = new SymbolIcon(Symbol.FullScreen);
         }
         private async void standardModeButton_Click(object sender, RoutedEventArgs e)
@@ -468,6 +474,7 @@ namespace WIn11
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             if (printingAct == true)
             {
                 printMan = PrintManager.GetForCurrentView();
@@ -492,12 +499,27 @@ namespace WIn11
                         string strFile = args.Files[0].Path;
                         if (args.Files != null)
                         {
-                            var text = await GetFileText(@strFile);
-
-                            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
-                            appView.Title = strFileName;
-                            txt.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
                             changed = false;
+                            try
+                            {
+                                var text = await GetFileText(@strFile);
+
+                                var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+                                appView.Title = strFileName;
+                                txt.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
+                                
+                            }
+                            catch
+                            {
+                                ContentDialog fileError = new ContentDialog()
+                                {
+                                    Title = "Oops...",
+                                    Content = resourceLoader.GetString("FileDesc"),
+                                    PrimaryButtonText = "OK"
+                                };
+                                await fileError.ShowAsync();
+                            }
+                            
                         }
                     }
                 }
@@ -515,7 +537,7 @@ namespace WIn11
         }
     private async void PrintButtonClick()
         {
-            
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             if (PrintManager.IsSupported())
             {
                 try
@@ -540,8 +562,8 @@ namespace WIn11
             {
                 ContentDialog noPrintingDialog = new ContentDialog()
                 {
-                    Title = "Printing not supported",
-                    Content = "Your device Is incompatible with Printing",
+                    Title = "Printing...",
+                    Content = resourceLoader.GetString("PrintError"),
                     PrimaryButtonText = "OK"
                 };
                 await noPrintingDialog.ShowAsync();
@@ -598,7 +620,7 @@ namespace WIn11
 
         private async void PrintTaskCompleted(PrintTask sender, PrintTaskCompletedEventArgs args)
         {
-
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             // Notify the user when the print operation fails.
             if (args.Completion == PrintTaskCompletion.Failed)
             {
@@ -607,8 +629,8 @@ namespace WIn11
                 {
                     ContentDialog noPrintingDialog = new ContentDialog()
                     {
-                        Title = "Printing error",
-                        Content = "Oops... Try Again Later",
+                        Title = "Printing...",
+                        Content = resourceLoader.GetString("FileDesc"),
                         PrimaryButtonText = "OK"
                     };
                     await noPrintingDialog.ShowAsync();
@@ -621,29 +643,32 @@ namespace WIn11
 
         private void MenuFlyoutItem_Click_7(object sender, RoutedEventArgs e)
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             if (AudioTg.IsChecked)
             {
                 ElementSoundPlayer.State = ElementSoundPlayerState.On;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
                 AudioTg.Icon = new SymbolIcon(Symbol.Audio);
-                AudioTg.Text = "Audio Activated";
+                AudioTg.Text = resourceLoader.GetString("AudioActivated/Text");
             }
             else
             {
                 AudioTg.Icon = new SymbolIcon(Symbol.Mute);
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
-                AudioTg.Text = "Audio Deactivated";
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
+                AudioTg.Text = resourceLoader.GetString("AudioDeactivated/Text");
             }
             
         }
 
         private void MenuFlyoutItem_Click_8(object sender, RoutedEventArgs e)
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             var view = ApplicationView.GetForCurrentView();
             if (view.IsFullScreenMode)
             {
                 view.ExitFullScreenMode();
-                ful.Text = "Full Screen";
+                ful.Text = resourceLoader.GetString("FullScreen/Text");
                 ful.Icon = new SymbolIcon(Symbol.FullScreen);
                 menuBar.HorizontalAlignment = HorizontalAlignment.Left;
                 Thickness margin = menuBar.Margin;
@@ -653,7 +678,7 @@ namespace WIn11
             else
             {
                 view.TryEnterFullScreenMode();
-                ful.Text = "Window Mode";
+                ful.Text = resourceLoader.GetString("Window/Text");
                 ful.Icon = new SymbolIcon(Symbol.BackToWindow);
                 menuBar.HorizontalAlignment = HorizontalAlignment.Center;
                 Thickness margin = menuBar.Margin;
@@ -669,15 +694,16 @@ namespace WIn11
 
         private async void FindBoxHighlightMatches()
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             var inputTextBox = new TextBox { AcceptsReturn = false };
             (inputTextBox as FrameworkElement).VerticalAlignment = VerticalAlignment.Bottom;
             var dialog = new ContentDialog
             {
                 Content = inputTextBox,
-                Title = "What Are You Searching?",
+                Title = resourceLoader.GetString("SearchQuest"),
                 IsSecondaryButtonEnabled = true,
-                PrimaryButtonText = "Search",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = resourceLoader.GetString("SearchButton"),
+                SecondaryButtonText = resourceLoader.GetString("Stop"),
                 DefaultButton = ContentDialogButton.Primary
             };
             if (await dialog.ShowAsync() == ContentDialogResult.Primary)
@@ -745,6 +771,8 @@ namespace WIn11
 
         private void txt_TextChanged(object sender, RoutedEventArgs e)
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+            var view = ApplicationView.GetForCurrentView();
             RichEditBox richemp = new RichEditBox();
             printingAct = false;
             if (txt.Document == richemp.Document)
@@ -764,9 +792,26 @@ namespace WIn11
 
                 Edit.Opacity = 0;
             }
+            if (view.IsFullScreenMode)
+            {
+                ful.Text = resourceLoader.GetString("Window/Text");
+                ful.Icon = new SymbolIcon(Symbol.BackToWindow);
+                menuBar.HorizontalAlignment = HorizontalAlignment.Center;
+                Thickness margin = menuBar.Margin;
+                margin.Top = 7;
+                menuBar.Margin = margin;
+            }
+            else
+            {
+                ful.Text = resourceLoader.GetString("FullScreen/Text");
+                ful.Icon = new SymbolIcon(Symbol.FullScreen);
+                menuBar.HorizontalAlignment = HorizontalAlignment.Left;
+                Thickness margin = menuBar.Margin;
+                margin.Top = 41;
+                menuBar.Margin = margin;
+            }
 
-            
-            
+
         }
             
     }

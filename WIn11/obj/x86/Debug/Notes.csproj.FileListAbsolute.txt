@@ -45,10 +45,13 @@ C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\ProjectArchitectures.t
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637424743200000000.json
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\System.Drawing.Common.dll
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\FxResources.System.Drawing.Common.SR.resw
-C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\resources.en-us.resfiles
-C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\resources.en-us.resfiles.intermediate
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\Notes.csproj.AssemblyReference.cache
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\Core\ForBundle\AppxManifest.xml
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\Microsoft.Graphics.Canvas.dll
 C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\Microsoft.Graphics.Canvas.winmd
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_637552364420000000.json
+C:\Users\black\Source\Repos\Notes-Git\WIn11\bin\x86\Debug\GreetingsPage.xbf
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\GreetingsPage.g.i.cs
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\GreetingsPage.g.cs
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\GreetingsPage.xaml
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x86\Debug\GreetingsPage.xbf

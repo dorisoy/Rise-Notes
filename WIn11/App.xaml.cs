@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
 
 namespace WIn11
 {
@@ -73,12 +74,18 @@ namespace WIn11
             {
                 if (rootFrame.Content == null)
                 {
-                    // Quando lo stack di esplorazione non viene ripristinato, passare alla prima pagina
-                    // configurando la nuova pagina per passare le informazioni richieste come parametro di
-                    // navigazione
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    IPropertySet roamingProperties = ApplicationData.Current.RoamingSettings.Values;
+                    if (roamingProperties.ContainsKey("HasBeenHereBefore"))
+                    {
+                        rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    }
+                    else
+                    {
+                        rootFrame.Navigate(typeof(Notes.GreetingsPage), e.Arguments);
+                        roamingProperties["HasBeenHereBefore"] = bool.TrueString;
+                    }
                 }
-                // Assicurarsi che la finestra corrente sia attiva
+               
                 Window.Current.Activate();
             }
         }
