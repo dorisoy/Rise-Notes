@@ -6,6 +6,11 @@ WinUI UWP Based Notepad created on VS2019
 
 ![immagine](https://user-images.githubusercontent.com/86930621/133507258-6bae8a7f-7239-47f8-b0e7-4172bb424e77.png)
 
+# Credits:
+App developer - BlackDev9
+
+Indonesian traduction - Ngetehkuy
+
 # Is it near to complete?
 It's getting near to Completed! I will update the Source Code sometimes, adding a list of updates i worked on!
 # Can i help?
@@ -13,6 +18,8 @@ Of Course, every bug should be deleted so reporting bugs and giving suggestions 
 # Is this Free? are you working for Money?
 Nahh, this is just a fun project i'm working on!
 It's free for all of you!
+
+
 ![immagine](https://user-images.githubusercontent.com/86930621/133507349-edc8e9ce-ea86-45d9-b1dd-c30b415b482e.png)
 
 ![immagine](https://user-images.githubusercontent.com/86930621/133507466-ea0e17b0-8eb2-46cf-82f8-7f0f887111cc.png)
