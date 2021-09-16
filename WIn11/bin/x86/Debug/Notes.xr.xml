@@ -22,6 +22,10 @@
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="Margin" />
       <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Background" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
       <RootMethod Name="GetRowSpan" />
@@ -49,8 +53,12 @@
       <RootProperty Name="Padding" />
       <RootProperty Name="Text" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="Style" />
       <RootProperty Name="Opacity" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="FocusVisualPrimaryBrush" />
+      <RootProperty Name="FocusVisualSecondaryBrush" />
+      <RootProperty Name="SelectionHighlightColor" />
+      <RootProperty Name="Style" />
       <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
@@ -224,8 +232,8 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Items" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.NullExtension" />
     <RootType FullName="Microsoft.UI.Xaml.Controls.MenuBarItem">
-      <RootProperty Name="Title" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Height" />
       <RootProperty Name="CornerRadius" />
@@ -266,7 +274,6 @@
       <RootMethod Name="GetAttachedFlyout" />
       <RootMethod Name="SetAttachedFlyout" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.NullExtension" />
     <RootType FullName="Microsoft.UI.Xaml.Controls.CommandBarFlyout" />
     <RootType FullName="WIn11.MainPage" />
   </Roots.RootTypes>

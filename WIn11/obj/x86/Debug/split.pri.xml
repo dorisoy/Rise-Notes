@@ -718,6 +718,9 @@
 					</Candidate>
 				</NamedResource>
 			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Columns">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Columns/Text"/>
+			</ResourceMapSubtree>
 			<ResourceMapSubtree name="Continue">
 				<NamedResource name="Content" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Continue/Content">
 					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
@@ -728,7 +731,7 @@
 			<ResourceMapSubtree name="EditText">
 				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/EditText/Text">
 					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
-						<Value>Edited</Value>
+						<Value>Modified</Value>
 					</Candidate>
 				</NamedResource>
 			</ResourceMapSubtree>
@@ -739,10 +742,27 @@
 					</Candidate>
 				</NamedResource>
 			</ResourceMapSubtree>
+			<ResourceMapSubtree name="FileButton">
+				<NamedResource name="Title" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/FileButton/Title">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>File</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
 			<ResourceMapSubtree name="FullScreen">
 				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/FullScreen/Text">
 					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
 						<Value>Full Screen Mode</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Lines">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/Lines/Text"/>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="NameDetails">
+				<NamedResource name="Text" uri="ms-resource://35c52142-9b91-4581-8bf3-4418b913ff96/Resources/NameDetails/Text">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>File Name</Value>
 					</Candidate>
 				</NamedResource>
 			</ResourceMapSubtree>

@@ -144,6 +144,9 @@
   <data name="FileAssoc.Text" xml:space="preserve">
     <value>Как сделать файловую ассоциацию доступной</value>
   </data>
+  <data name="FileButton.Title" xml:space="preserve">
+    <value>файл</value>
+  </data>
   <data name="FileDesc" xml:space="preserve">
     <value>Прости, что-то пошло не так!</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="FullScreen.Text" xml:space="preserve">
     <value>полноэкранный режим</value>
+  </data>
+  <data name="NameDetails.Text" xml:space="preserve">
+    <value>имя файла</value>
   </data>
   <data name="New.Text" xml:space="preserve">
     <value>новый</value>

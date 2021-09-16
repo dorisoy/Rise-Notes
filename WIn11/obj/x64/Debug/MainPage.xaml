@@ -83,8 +83,8 @@
             PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
 
             <Grid>
-                <Frame x:ConnectionId='33' x:Name="contentFrame">
-                    <RichEditBox x:ConnectionId='34' Style="{StaticResource RichEditBoxStyle1}" x:Name="txt"                            TextWrapping="Wrap" CornerRadius="0,0,0,0" Padding="23,23,23,23" Margin="0,0,0,-2"                               AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="Transparent" SelectionHighlightColor="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" BorderBrush="{x:Null}" ContentLinkBackgroundColor="#FFF2F2F2">
+                <Frame x:ConnectionId='37' x:Name="contentFrame">
+                    <RichEditBox x:ConnectionId='38' Style="{StaticResource RichEditBoxStyle1}" x:Name="txt"                            TextWrapping="Wrap" CornerRadius="0,0,0,0" Padding="23,23,23,23" Margin="0,0,0,30"                               AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="Transparent" SelectionHighlightColor="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" BorderBrush="{x:Null}" ContentLinkBackgroundColor="#FFF2F2F2">
                         <FlyoutBase.AttachedFlyout>
                             <muxc:CommandBarFlyout/>
                         </FlyoutBase.AttachedFlyout>
@@ -101,21 +101,21 @@
                 Background="Transparent"
                 Height="55">
             <StackPanel Orientation="Horizontal">
-                <Image x:ConnectionId='30' x:Name="AppFontIcon"
+                <Image x:ConnectionId='34' x:Name="AppFontIcon"
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Center"
                     Source="Assets/Square44x44Logo.altform-lightunplated_targetsize-256.png" 
                     Width="16" 
                     Margin="1,15,0,0"
                     Height="16"/>
-                <TextBlock x:ConnectionId='31' x:Name="AppTitle"
+                <TextBlock x:ConnectionId='35' x:Name="AppTitle"
                     Text="Notes"
                     VerticalAlignment="Center"
                     Margin="15,15,0,0"
                     Style="{StaticResource CaptionTextBlockStyle}" />
 
 
-                <TextBlock x:ConnectionId='32' x:Name="Edit"
+                <TextBlock x:ConnectionId='36' x:Name="Edit"
                     x:Uid="EditText"
                     VerticalAlignment="Center"
                     Margin="8,17,0,0"
@@ -128,32 +128,32 @@
         </Border>
         <Button x:ConnectionId='14' x:Name="exitbutt" Content="_"                                  Visibility="Collapsed" FontSize="22" Padding="-1,-24,0,0" FontFamily="Segoe UI" FontWeight="Normal" Margin="17,14,0,0" VerticalAlignment="Top" Width="20" Height="20" HorizontalAlignment="Left"/>
         <muxc:MenuBar x:ConnectionId='15' x:Name="menuBar" Margin="12,41,0,0" FontSize="10" FontWeight="Normal" Height="36" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <muxc:MenuBarItem x:ConnectionId='16' x:Name="FileButton" Title="File" FontSize="11" Height="30" CornerRadius="5,5,5,5" BorderBrush="White" Background="#05C9C6C6" Margin="4,0,4,0">
-                <MenuFlyoutItem x:ConnectionId='25' x:Uid="New"                              Width="150">
+            <muxc:MenuBarItem x:ConnectionId='19' x:Name="FileButton" x:Uid="FileButton" FontSize="11" Height="30" CornerRadius="5,5,5,5" BorderBrush="White" Background="#05C9C6C6" Margin="4,0,4,0">
+                <MenuFlyoutItem x:ConnectionId='29' x:Uid="New"                              Width="150">
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Add"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
-                <MenuFlyoutItem x:ConnectionId='26' x:Uid="Open"                               >
+                <MenuFlyoutItem x:ConnectionId='30' x:Uid="Open"                               >
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="OpenWith"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
-                <MenuFlyoutItem x:ConnectionId='27' x:Uid="SaveFile"                               >
+                <MenuFlyoutItem x:ConnectionId='31' x:Uid="SaveFile"                               >
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Save"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:ConnectionId='28' x:Uid="Search"                                Icon="Find"/>
-                <MenuFlyoutItem x:ConnectionId='29' x:Uid="PrintText"                    >
+                <MenuFlyoutItem x:ConnectionId='32' x:Uid="Search"                                Icon="Find"/>
+                <MenuFlyoutItem x:ConnectionId='33' x:Uid="PrintText"                    >
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Print"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
             </muxc:MenuBarItem>
-            <muxc:MenuBarItem x:ConnectionId='17' x:Name="VisualButton" x:Uid="VisualButtonText" Height="30" CornerRadius="5,5,5,5" Background="#05C9C6C6" Margin="8,0,0,0" BorderBrush="#FFECECEC" BorderThickness="0,0,0,0">
-                <MenuFlyoutItem x:ConnectionId='18' Text="Font"                                Width="200">
+            <muxc:MenuBarItem x:ConnectionId='20' x:Name="VisualButton" x:Uid="VisualButtonText" Height="30" CornerRadius="5,5,5,5" Background="#05C9C6C6" Margin="8,0,0,0" BorderBrush="#FFECECEC" BorderThickness="0,0,0,0">
+                <MenuFlyoutItem x:ConnectionId='21' Text="Font"                                Width="200">
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="Font"/>
                     </MenuFlyoutItem.Icon>
@@ -162,32 +162,35 @@
                     <MenuFlyoutSubItem.Icon>
                         <SymbolIcon Symbol="Zoom"/>
                     </MenuFlyoutSubItem.Icon>
-                    <MenuFlyoutItem x:ConnectionId='23'                               >
+                    <MenuFlyoutItem x:ConnectionId='27'                               >
                         <MenuFlyoutItem.Icon>
                             <SymbolIcon Symbol="Add"/>
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
 
-                    <MenuFlyoutItem x:ConnectionId='24'                               >
+                    <MenuFlyoutItem x:ConnectionId='28'                               >
                         <MenuFlyoutItem.Icon>
                             <SymbolIcon Symbol="Remove"/>
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                 </MenuFlyoutSubItem>
-                <ToggleMenuFlyoutItem x:ConnectionId='19' x:Name="AudioTg" x:Uid="AudioDeactivated" Icon="Mute"                                IsChecked="False"/>
+                <ToggleMenuFlyoutItem x:ConnectionId='22' x:Name="AudioTg" x:Uid="AudioDeactivated" Icon="Mute"                                IsChecked="False"/>
+                <ToggleMenuFlyoutItem x:ConnectionId='23' x:Name="Details" x:Uid="NameDetails" Icon="More"                       IsChecked="True"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:ConnectionId='20' x:Uid="PIP"                                    Icon="NewWindow"/>
-                <MenuFlyoutItem x:ConnectionId='21' x:Name="ful" x:Uid="FullScreen"                                Icon="FullScreen"/>
+                <MenuFlyoutItem x:ConnectionId='24' x:Uid="PIP"                                    Icon="NewWindow"/>
+                <MenuFlyoutItem x:ConnectionId='25' x:Name="ful" x:Uid="FullScreen"                                Icon="FullScreen"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:ConnectionId='22' x:Uid="About"                               >
+                <MenuFlyoutItem x:ConnectionId='26' x:Uid="About"                               >
                     <MenuFlyoutItem.Icon>
                         <SymbolIcon Symbol="People"/>
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
             </muxc:MenuBarItem>
         </muxc:MenuBar>
-
-
+        <Grid x:ConnectionId='16' x:Name="nameBar" Height="29" VerticalAlignment="Bottom" Margin="0,0,0,0" HorizontalAlignment="Stretch" Background="#0CA4A4A4">
+            <TextBlock x:ConnectionId='18' x:Name="fileName" HorizontalAlignment="Left" Margin="20,0,0,6" Text="New Document" TextWrapping="Wrap" Padding="0,0,0,0" VerticalAlignment="Bottom"/>
+        </Grid>
+        <TextBlock x:ConnectionId='17' x:Name="richTmp" Opacity="0.005" Width="1" Height="1" FocusVisualPrimaryBrush="{x:Null}" Foreground="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" SelectionHighlightColor="{x:Null}" HorizontalAlignment="Center" Margin="0,500,0,0" VerticalAlignment="Top" />
     </Grid>
 
 

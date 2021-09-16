@@ -7,7 +7,7 @@
 
     Per ulteriori informazioni sui file manifesto di pacchetto, vedere http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="35c52142-9b91-4581-8bf3-4418b913ff96" Publisher="CN=BlackDev9" Version="0.5.4.0" ProcessorArchitecture="x64" />
+  <Identity Name="35c52142-9b91-4581-8bf3-4418b913ff96" Publisher="CN=BlackDev9" Version="0.6.0.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="35c52142-9b91-4581-8bf3-4418b913ff96" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Notes</DisplayName>
@@ -23,6 +23,8 @@
   </Dependencies>
   <Resources>
     <Resource Language="EN-US" />
+    <Resource Language="ES-ES" />
+    <Resource Language="ID-ID" />
     <Resource Language="IT-IT" />
     <Resource Language="RU-RU" />
     <Resource uap:Scale="100" />

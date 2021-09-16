@@ -130,7 +130,7 @@
     <value>Continue</value>
   </data>
   <data name="EditText.Text" xml:space="preserve">
-    <value>Edited</value>
+    <value>Modified</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
@@ -144,6 +144,9 @@
   <data name="FileAssoc.Text" xml:space="preserve">
     <value>How to make File Association avaiable</value>
   </data>
+  <data name="FileButton.Title" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="FileDesc" xml:space="preserve">
     <value>Sorry, Something went wrong!</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="FullScreen.Text" xml:space="preserve">
     <value>Full Screen Mode</value>
+  </data>
+  <data name="NameDetails.Text" xml:space="preserve">
+    <value>File Name</value>
   </data>
   <data name="New.Text" xml:space="preserve">
     <value>New</value>

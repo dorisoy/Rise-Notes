@@ -14,7 +14,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="85,320,0,0" x:Uid="Welcome" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}" FontWeight="Bold" TextDecorations="None"/>
             <TextBlock HorizontalAlignment="Left" Margin="85,383,0,0" x:Uid="WelDesc" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"/>
             <Button x:Uid="Continue" FontSize="18" CornerRadius="6,6,6,6" Margin="84,0,0,73" VerticalAlignment="Bottom" Background="{ThemeResource SystemAccentColorDark1}" Foreground="White" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="#F6FFFFFF" Click="Button_Click" Height="40" BorderBrush="#7F8E8CD8" Padding="19,5,19,6" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
-            <Button Content="GitHub" Width="122" FontSize="18" CornerRadius="6,6,6,6" Margin="229,0,0,73" VerticalAlignment="Bottom" Background="#19FFFFFF" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}" Click="Button_Click_1" Height="40" Padding="7,5,7,6">
+            <Button Content="GitHub" Width="122" FontSize="18" CornerRadius="6,6,6,6" Margin="245,0,0,74" VerticalAlignment="Bottom" Background="#19FFFFFF" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}" Click="Button_Click_1" Height="40" Padding="7,5,7,6">
                 <Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <LinearGradientBrush.RelativeTransform>

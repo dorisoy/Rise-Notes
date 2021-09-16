@@ -187,3 +187,8 @@ C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\Notes.csproj.CopyCom
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\Microsoft.UI.Xaml.pri.xml
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\Notes.exe
 C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\Notes.pdb
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\Notes.csproj.AssemblyReference.cache
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\GreetingsPage.g.i.cs
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\GreetingsPage.g.cs
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\GreetingsPage.xaml
+C:\Users\black\Source\Repos\Notes-Git\WIn11\obj\x64\Release\GreetingsPage.xbf

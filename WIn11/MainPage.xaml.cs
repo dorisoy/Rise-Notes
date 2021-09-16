@@ -44,6 +44,7 @@ namespace WIn11
 
         public MainPage()
         {
+            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             this.InitializeComponent();
 
@@ -99,6 +100,7 @@ namespace WIn11
 
             };
 
+            appView.Title = "New Document.txt";
 
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -149,7 +151,7 @@ namespace WIn11
             }
         }
 
-
+        bool startedApp = true;
 
         // Update the TitleBar based on the inactive/active state of the app
         private void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
@@ -207,8 +209,10 @@ namespace WIn11
             Edit.Opacity = 0;
             var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
             appView.Title = "New Document";
-            changed = false;
+            startedApp = true;
         }
+
+        string textMain = "";
 
         private async void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
@@ -233,6 +237,9 @@ namespace WIn11
                     string text = reader.ReadString(buffer.Length);
                     appView.Title = file.Name;
                     txt.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
+                    txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
+                    richTmp.Text = textMain;
+                    startedApp = false;
                     changed = false;
                 }
                 catch (Exception)
@@ -250,8 +257,7 @@ namespace WIn11
 
             else
             {
-
-                appView.Title = "New Document";
+                appView.Title = appView.Title;
             }
         }
 
@@ -287,24 +293,15 @@ namespace WIn11
                     await errorBox.ShowAsync();
                 }
             }
-
-            changed = false;
-            if (changed == true)
-            {
-                Edit.Opacity = 0.6;
-            }
-            else
-            {
-                Edit.Opacity = 0;
-            }
             var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
             if (file != null)
             {
                 appView.Title = file.Name;
+                fileName.Text = appView.Title;
             }
             else
             {
-                appView.Title = "New Document";
+                appView.Title = appView.Title;
             }
         }
 
@@ -346,42 +343,71 @@ namespace WIn11
 
         }
 
+        private List<string> Cats = new List<string>()
+        {
+            "Arial", "Calibri", "Cambria", "Cambria Math", "Comic Sans MS", "Courier New",
+            "Ebrima", "Gadugi", "Georgia",
+            "Leelawadee UI", "Lucida Console", "Malgun Gothic", "Microsoft Himalaya", "Microsoft JhengHei",
+            "Microsoft JhengHei UI", "Microsoft New Tai Lue", "Microsoft PhagsPa",
+            "Microsoft Tai Le", "Microsoft YaHei", "Microsoft YaHei UI",
+            "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text",
+            "Nirmala UI", "Segoe Print", "Segoe UI", "Segoe UI Emoji",
+            "Segoe UI Historic", "Segoe UI Symbol", "SimSun", "Times New Roman",
+            "Trebuchet MS", "Verdana", "Yu Gothic",
+            "Yu Gothic UI"
+        };
+
+        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            var suitableItems = new List<string>();
+            var splitText = sender.Text.ToLower().Split(" ");
+            foreach (var font in Cats)
+            {
+                var found = splitText.All((key) =>
+                {
+                    return font.ToLower().Contains(key);
+                });
+                if (found)
+                {
+                    suitableItems.Add(font);
+                }
+            }
+            if (suitableItems.Count == 0)
+            {
+                
+            }
+            sender.ItemsSource = suitableItems;
+        }
+
+        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            txt.FontFamily = new FontFamily(args.SelectedItem.ToString());
+        }
+
         private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
         {
             Save();
         }
 
-        public static async Task<string> ShowAddDialogAsync(string title)
+        private async void MenuFlyoutItem_Click_3(object sender, RoutedEventArgs e)
         {
-            var inputTextBox = new TextBox { AcceptsReturn = false };
+            var mp = new MainPage();
+            var inputTextBox = new AutoSuggestBox();
+            inputTextBox.TextChanged += AutoSuggestBox_TextChanged;
+            inputTextBox.SuggestionChosen += AutoSuggestBox_SuggestionChosen;
             (inputTextBox as FrameworkElement).VerticalAlignment = VerticalAlignment.Bottom;
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             var dialog = new ContentDialog
             {
-                Content = inputTextBox,
-                Title = title,
+                Title = "Font",
                 IsSecondaryButtonEnabled = true,
                 PrimaryButtonText = "Ok",
                 SecondaryButtonText = resourceLoader.GetString("Stop"),
-                DefaultButton = ContentDialogButton.Primary
+                DefaultButton = ContentDialogButton.Primary,
+                Content = inputTextBox
             };
-            if (await dialog.ShowAsync() == ContentDialogResult.Primary)
-
-                return inputTextBox.Text;
-            else
-                return "u";
-        }
-
-        private async void MenuFlyoutItem_Click_3(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                txt.FontFamily = new FontFamily(await ShowAddDialogAsync("Font"));
-            }
-            catch
-            {
-
-            }
+            Window.Current.SetTitleBar(AppTitleBar);
+            var result = await dialog.ShowAsync();
         }
 
         private async void MenuFlyoutItem_Click_4(object sender, RoutedEventArgs e)
@@ -389,7 +415,7 @@ namespace WIn11
             ContentDialog AboutDialog = new ContentDialog
             {
                 Title = "Notes",
-                Content = "PreRelease 0.5.4",
+                Content = "PreRelease 0.6.0",
                 CloseButtonText = "Ok!",
                 DefaultButton = ContentDialogButton.Close
             };
@@ -773,23 +799,39 @@ namespace WIn11
         {
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             var view = ApplicationView.GetForCurrentView();
-            RichEditBox richemp = new RichEditBox();
+            string textStart;
+            txt.Document.GetText(TextGetOptions.UseObjectText, out textStart);
+            txt.Document.GetText(TextGetOptions.UseObjectText, out textMain);
             printingAct = false;
-            if (txt.Document == richemp.Document)
+            if (startedApp == false)
             {
-                changed = false;
+                if (textMain == richTmp.Text)
+                {
+                    changed = false;
+                }
+                else
+                {
+                    changed = true;
+                }
             }
             else
             {
-                changed = true;
+                if (textStart == "")
+                {
+                    changed = false;
+                }
+                else
+                {
+                    changed = true;
+                }
             }
+            
             if (changed == true)
             {
                 Edit.Opacity = 0.6;
             }
             else
             {
-
                 Edit.Opacity = 0;
             }
             if (view.IsFullScreenMode)
@@ -810,10 +852,21 @@ namespace WIn11
                 margin.Top = 41;
                 menuBar.Margin = margin;
             }
-
-
+            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+            fileName.Text = appView.Title;
         }
-            
+
+        private void Details_Click(object sender, RoutedEventArgs e)
+        {
+            if (Details.IsChecked)
+            {
+                nameBar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                nameBar.Visibility = Visibility.Collapsed;
+            }
+        }
     }
     
 }

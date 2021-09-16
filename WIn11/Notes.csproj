@@ -26,7 +26,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxPackageDir>C:\Users\black\Downloads\notes\</AppxPackageDir>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
-    <PackageCertificateThumbprint>368008B668E3CDF271F06654161CFF7A914769E5</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>753C8385CA7B1E3F0986C5CD856D4FBC46A2C6A1</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppInstallerUri>https://github.com/BlkDev9/Notes/releases</AppInstallerUri>
   </PropertyGroup>
@@ -236,6 +236,8 @@
   <ItemGroup>
     <None Include="app.manifest" />
     <None Include="Notes_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\es-ES\Resources.resw" />
+    <PRIResource Include="Strings\id-ID\Resources.resw" />
     <PRIResource Include="Strings\ru-RU\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\it-IT\Resources.resw" />

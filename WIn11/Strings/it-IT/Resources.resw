@@ -126,6 +126,9 @@
   <data name="AudioDeactivated.Text" xml:space="preserve">
     <value>Audio Disattivato</value>
   </data>
+  <data name="Columns.Text" xml:space="preserve">
+    <value>Colonna</value>
+  </data>
   <data name="Continue.Content" xml:space="preserve">
     <value>Continua</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="FileAssoc.Text" xml:space="preserve">
     <value>Come rendere l'associazione File disponibile</value>
   </data>
+  <data name="FileButton.Title" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="FileDesc" xml:space="preserve">
     <value>Scusami, Qualcosa è andato storto!</value>
   </data>
@@ -152,6 +158,12 @@
   </data>
   <data name="FullScreen.Text" xml:space="preserve">
     <value>Schermo Intero</value>
+  </data>
+  <data name="Lines.Text" xml:space="preserve">
+    <value>Riga</value>
+  </data>
+  <data name="NameDetails.Text" xml:space="preserve">
+    <value>Nome File</value>
   </data>
   <data name="New.Text" xml:space="preserve">
     <value>Nuovo</value>

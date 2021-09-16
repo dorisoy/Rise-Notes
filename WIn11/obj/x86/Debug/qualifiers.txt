@@ -11,5 +11,7 @@ TargetSize=24
 TargetSize=32
 TargetSize=48
 Language=EN-US
+Language=ES-ES
+Language=ID-ID
 Language=IT-IT
 Language=RU-RU
