@@ -1,4 +1,4 @@
-![newwww-min](https://user-images.githubusercontent.com/74561130/130691567-d7a0e4ab-6791-4e08-924a-89ff220e4e4d.png)
+![Frame 59 2](https://user-images.githubusercontent.com/74561130/133862642-c8925dc4-a0f7-4b94-a223-ca96e72d7e74.png)
 
 **Rise Notes** gives new life to interfaces and features you are familiar with. We always try to make our apps beautiful while remaining functional and Rise Notes continues that philosiphy.
 
