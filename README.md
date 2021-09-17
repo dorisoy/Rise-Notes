@@ -53,6 +53,7 @@ If you'd like to contribute, join the Rise Apps discord server and ask for the c
 **Development & design**
 
 Design, translation and Rise team lead - Joseph Beattie (josephbeattie on GitHub)
+
 Original & main programmer - BlackDev9
 
 **Translators**
