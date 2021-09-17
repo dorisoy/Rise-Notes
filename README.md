@@ -36,7 +36,7 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 
 We use the GPL License with a few changed clauses to protect our apps' integrity. The GPL License is available here: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-Changed clauses:
+**Changed clauses:**
 
 Users are allowed to freely edit and view the code for their own personal use and recreation. Although, unlike the regular GPL license, we do not allow users to share, distribute or sell our code unless they have our & our contributors permission to do so. Please simply ask and we'll be happy to chat with you.
 
@@ -51,10 +51,12 @@ If you'd like to contribute, join the Rise Apps discord server and ask for the c
 ## Credits
 
 **Development & design**
+
 Design, translation and Rise team lead - Joseph Beattie (josephbeattie on GitHub)
 Original & main programmer - BlackDev9
 
 **Translators**
+
 Indonesian - Ngetehkuy
 
 
