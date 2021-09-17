@@ -34,6 +34,8 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 
 ## Licensing
 
+This is free software with no warranty of any kind. Sorry :(
+
 We use the GPL License with a few changed clauses to protect our apps' integrity. The GPL License is available here: https://www.gnu.org/licenses/gpl-3.0.en.html
 
 **Changed clauses:**
