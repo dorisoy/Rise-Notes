@@ -38,6 +38,7 @@ This is free software with no warranty of any kind. Sorry :(
 
 We use the GPL License with a few changed clauses to protect our apps' integrity. The GPL License is available here: https://www.gnu.org/licenses/gpl-3.0.en.html
 
+
 **Changed clauses:**
 
 Users are allowed to freely edit and view the code for their own personal use and recreation. Although, unlike the regular GPL license, we do not allow users to share, distribute or sell our code unless they have our & our contributors permission to do so. Please simply ask and we'll be happy to chat with you.
