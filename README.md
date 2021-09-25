@@ -6,7 +6,7 @@
 
 We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can see a render of our current design below.
 
-![Frame 41](https://user-images.githubusercontent.com/74561130/133862379-20b506bd-c2cf-48c6-94b6-8e3a87aaa48e.png)
+![immagine](https://user-images.githubusercontent.com/86930621/134763208-e430009e-5900-4030-bab7-f5123e09ef75.png)
 
 
 ## Features
@@ -17,18 +17,16 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 * Fonts and font sizes
 * Images and drawings
 * Sketch - an overlay which allows you to draw, doodle and annotate allowing your creativity and ideas to shine.
-* Full screen support
+* Simple Mode
 * Picture in picture
-* Zoom capabilities
-* Finding & replacing.
+* Find
 
 ## *Planned* Features
 
-* Tabs and multi window
-* New tab page containing recent documents and sketches.
-* Sketch only mode
+* Tabs and Multi window
+* New tab page containing recent documents.
 * Full screen sketch
-* Exporting sketches
+* Exporting sketches (Existing but currently disabled)
 * Advanced mode with line numbers etc.
 
 ## Licensing
@@ -61,5 +59,3 @@ Original & main programmer - BlackDev9
 **Translators**
 
 Indonesian - Ngetehkuy
-
-
