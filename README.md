@@ -4,7 +4,7 @@
 
 ## Appearance & Design
 
-We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can see a render of our current design below.
+We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can seeour current design below.
 
 ![immagine](https://user-images.githubusercontent.com/86930621/134763208-e430009e-5900-4030-bab7-f5123e09ef75.png)
 
