@@ -4,7 +4,7 @@
 
 ## Appearance & Design
 
-We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can seeour current design below.
+We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can see our current design below (still very unfinished).
 
 ![immagine](https://user-images.githubusercontent.com/86930621/134763208-e430009e-5900-4030-bab7-f5123e09ef75.png)
 
@@ -44,7 +44,7 @@ Users are allowed to freely edit and view the code for their own personal use an
 
 Installers or packages aren't available yet. If you want to try it, open the project in Visual Studio and deploy the solution. 
 
-We have a simple insider program that is growing every single day! If you'd like early packages before they're available, join the Rise Insider Program here: https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1UMUdKWlVSTE0yN0JKMEpXWkc5T1ZBMkpUWC4u
+We have a simple insider program that is growing every single day! If you'd like early packages before they're available, join the Rise Insider Program here: https://bit.ly/rise-insider
 
 If you'd like to contribute, join the Rise Apps discord server and ask for the collaborator role, we'll take you through the vetting process. If you'd like to translate, it's a very similar procedure.
 
