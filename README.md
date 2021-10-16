@@ -1,4 +1,4 @@
-![Frame 59 2](https://user-images.githubusercontent.com/74561130/133862642-c8925dc4-a0f7-4b94-a223-ca96e72d7e74.png)
+
 
 **Rise Notes** gives new life to interfaces and features you are familiar with. We always try to make our apps beautiful while remaining functional and Rise Notes continues that philosiphy.
 
@@ -20,42 +20,51 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 * Simple Mode
 * Picture in picture
 * Find
+* Time & Date
+* Tabs
+* At a glance page to view and create documents
 
 ## *Planned* Features
 
-* Tabs and Multi window
-* New tab page containing recent documents.
+* Multi window
 * Full screen sketch
-* Exporting sketches (Existing but currently disabled)
 * Advanced mode with line numbers etc.
+* Sticky notes
+* Advanced image capabilities
 
 ## Licensing
 
 This is free software with no warranty of any kind. Sorry :(
 
-We use the GPL License with a few changed clauses to protect our apps' integrity. The GPL License is available here: https://www.gnu.org/licenses/gpl-3.0.en.html
-
+We use the GPL License with a few changed clauses to protect our apps' integrity. Click the GPL License button to see the full license without the changed clauses.
 
 **Changed clauses:**
 
-Users are allowed to freely edit and view the code for their own personal use and recreation. Although, unlike the regular GPL license, we do not allow users to share, distribute or sell our code unless they have our & our contributors permission to do so. Please simply ask and we'll be happy to chat with you.
+Users are allowed to freely edit and view the code for their own personal use and recreation. Although, unlike the regular GPL license, we do not allow users to share, distribute or sell our code unless they have our & our contributors permission to do so. Please simply ask and we'll be happy to chat with you. 
+
+[![GPL](https://user-images.githubusercontent.com/74561130/137586878-642d9907-aee4-4b69-bc4a-2c7d1e44540c.png)](https://www.gnu.org/licenses/gpl-3.0.en.html) 
+
+
 
 ## Downloads, Contribute and the Insider Program
 
-Installers or packages aren't available yet. If you want to try it, open the project in Visual Studio and deploy the solution. 
+MSIX packages are available now for the Pre-Alpha 1 build. You can try them by joining the Insider Program! We aren't going to be available in the Microsoft Store for the Pre-Alpha process as we will be releasing many builds over the next few months. Trying to approve each build on a regular basis is just not feasible. 
 
-We have a simple insider program that is growing every single day! If you'd like early packages before they're available, join the Rise Insider Program here: https://bit.ly/rise-insider
+If you'd like early packages before they're available, join the **Rise** Insider Program. Like to contribute code or translate the app? Click the contribute button! And, if you're already an insider, you can leave the program or change your channel from Insider Settings.
 
-If you'd like to contribute, join the Rise Apps discord server and ask for the collaborator role, we'll take you through the vetting process. If you'd like to translate, it's a very similar procedure.
+**If you are an Insider already, just click the Download button and you'll be taken to a page to download :)**
 
+[![Download](https://user-images.githubusercontent.com/74561130/137598555-649c77c7-1719-4aa3-8017-8b41283de730.png)](https://drive.google.com/drive/folders/1KvRgE4nd71MdbriXqFfqrSbqwPmSN7f9?usp=sharing) ![divide](https://user-images.githubusercontent.com/74561130/137599566-866fef7d-967e-4ad1-91da-8014d1752b93.png) [![Contribute](https://user-images.githubusercontent.com/74561130/137586097-1f64560c-9bb1-47cc-bd44-fa87c1b09e5b.png)](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1UQ1pJWFRWOFA1MDk3MUtVRk5SWVlTQktPWS4u) [![JoinInsider](https://user-images.githubusercontent.com/74561130/137585885-7f98b4de-5067-41ee-bdb4-2a04fea4b90a.png)](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1UMUdKWlVSTE0yN0JKMEpXWkc5T1ZBMkpUWC4u)  [![InsiderSettings](https://user-images.githubusercontent.com/74561130/137586189-b814375d-7786-49ba-984c-5d7868b527a4.png)
+  ](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1UQ0UxNjFVS0pCUkpKVkpVTUpUSktBRjVKUS4u)  
 ## Credits
 
-**Development & design**
+**Creators**
 
-Design, translation and Rise team lead - Joseph Beattie (josephbeattie on GitHub)
+* [Joseph Beattie (@josephbeattie)](https://github.com/josephbeattie): Rise Team Leader and Founder - Design, Occasional Programming, Development. Languages and Translations: English Language & Spanish.
 
-Original & main programmer - BlackDev9
+* [BlkDev9 (@blkdev9)](https://github.com/blkdev9): Original and Main Programmer, Translator for Italian
 
-**Translators**
+**Additional Translators & Other Contributors**
 
 Indonesian - Ngetehkuy
+* [Ngetehkuy (@Ngetehkuy)](https://github.com/ngetehkuy) - Translator for Indonesian
