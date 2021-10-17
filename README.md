@@ -5,9 +5,9 @@
 
 ## Appearance & Design
 
-We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can see our current design below (still very unfinished).
+We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can see our current design below :D
 
-![immagine](https://user-images.githubusercontent.com/86930621/134763208-e430009e-5900-4030-bab7-f5123e09ef75.png)
+![immagine](https://user-images.githubusercontent.com/86930621/137632974-3545a902-f649-44be-af32-293de549da3c.png)
 
 
 ## Features
@@ -17,13 +17,14 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 * Saving files
 * Fonts and font sizes
 * Images and drawings
-* Sketch - an overlay which allows you to draw, doodle and annotate allowing your creativity and ideas to shine.
+* Sketcher - an overlay which allows you to draw, doodle and annotate allowing your creativity and ideas to shine.
 * Simple Mode
 * Picture in picture
 * Find
 * Time & Date
 * Tabs
 * At a glance page to view and create documents
+* Advanced image capabilities
 
 ## *Planned* Features
 
@@ -31,7 +32,6 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 * Full screen sketch
 * Advanced mode with line numbers etc.
 * Sticky notes
-* Advanced image capabilities
 
 ## Licensing
 
@@ -67,5 +67,4 @@ If you'd like early packages before they're available, join the **Rise** Insider
 
 **Additional Translators & Other Contributors**
 
-Indonesian - Ngetehkuy
 * [Ngetehkuy (@Ngetehkuy)](https://github.com/ngetehkuy) - Translator for Indonesian
