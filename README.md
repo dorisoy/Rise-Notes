@@ -10,7 +10,7 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 ![immagine](https://user-images.githubusercontent.com/86930621/137632974-3545a902-f649-44be-af32-293de549da3c.png)
 
 
-## Features
+## Features Available in Pre-Alpha 1
 
 * TXT and RTF support
 * Printing capabilities
