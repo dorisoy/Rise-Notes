@@ -1,5 +1,5 @@
 ![risenotesnewbanner-min](https://user-images.githubusercontent.com/74561130/137600994-d2cc17af-7d6a-4b7f-980b-1bb08274f281.png)
-![notes](https://user-images.githubusercontent.com/74561130/137601001-59453bb0-0b10-4f92-87f8-63a991f32255.png)
+**Pre-Alpha 1 coming very soon**
 
 **Rise Notes** gives new life to interfaces and features you are familiar with. We always try to make our apps beautiful while remaining functional and Rise Notes continues that philosiphy.
 
@@ -57,6 +57,11 @@ If you'd like early packages before they're available, join the **Rise** Insider
 
 [![Download](https://user-images.githubusercontent.com/74561130/137598555-649c77c7-1719-4aa3-8017-8b41283de730.png)](https://drive.google.com/drive/folders/1KvRgE4nd71MdbriXqFfqrSbqwPmSN7f9?usp=sharing) ![divide](https://user-images.githubusercontent.com/74561130/137599566-866fef7d-967e-4ad1-91da-8014d1752b93.png) [![Contribute](https://user-images.githubusercontent.com/74561130/137586097-1f64560c-9bb1-47cc-bd44-fa87c1b09e5b.png)](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1UQ1pJWFRWOFA1MDk3MUtVRk5SWVlTQktPWS4u) [![JoinInsider](https://user-images.githubusercontent.com/74561130/137585885-7f98b4de-5067-41ee-bdb4-2a04fea4b90a.png)](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1UMUdKWlVSTE0yN0JKMEpXWkc5T1ZBMkpUWC4u)  [![InsiderSettings](https://user-images.githubusercontent.com/74561130/137586189-b814375d-7786-49ba-984c-5d7868b527a4.png)
   ](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1UQ0UxNjFVS0pCUkpKVkpVTUpUSktBRjVKUS4u)  
+## Feedback
+
+We'd love to hear your feedback on development, whether thats an issue you're having or a suggestion you think could help make our app better! Submit the form here:
+[![Feedback](https://user-images.githubusercontent.com/74561130/138166230-321f4d30-50a4-444f-b5aa-74f1396f7377.png)](https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1URFAxTkRNMEZMVEsxWTlWRE9SRkVHWElOUi4u)
+
 ## Credits
 
 **Creators**
