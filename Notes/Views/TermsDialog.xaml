@@ -1,0 +1,50 @@
+﻿<ContentDialog xmlns:my="using:Microsoft.UI.Xaml.Controls"  Style="{StaticResource DefaultContentDialogStyle}"
+    x:Class="Notes.Views.TermsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Notes.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    PrimaryButtonText="Continue"
+    DefaultButton="Primary"
+    x:Uid="/Setup/textBut1"
+    SecondaryButtonText="Disagree"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    Closing="ContentDialog_Closing">
+    <Grid Width="500" Height="300" Padding="-170,0,0,0">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition IsStaggeringEnabled="True" />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <!-- my:ProgressBar x:Name="prg"  VerticalAlignment="Bottom" Margin="29,0,23,30" Value="0" Width="100" HorizontalAlignment="Left" -->
+        <Grid x:Name="GridLicense" Visibility="Collapsed">
+            <TextBlock x:Uid="/Setup/text1" Text="License Agreement" FontFamily="Segoe UI Variable Display Semibold" FontWeight="SemiBold" FontSize="26" Margin="178,0,0,0"/>
+            <StackPanel Margin="178,36,0,2" Spacing="15">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource BaseTextBlockStyle}" x:Uid="/Setup/text2" Text="Rise Notes - Licence Agreement &amp; Terms for Use" />
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="/Setup/text3" Text="Last Updated: August 2021" />
+                </StackPanel>
+                <TextBlock Style="{StaticResource BaseTextBlockStyle}" Text="Software &amp; Copyright" />
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="This project is not officially open source software and is protected by copyright. Selling, copying or otherwise distributing this software is prohibited*. Although you are permitted to modify and view the source code as much as you wish for your own personal use or the use of Rise Notes (e.g. contributing on GitHub). More info about becoming a contributor is available on the main repository page." Margin="0,0,0,0" Height="175" />
+            </StackPanel>
+            <!-- Image Source="/Assets/Terms.png" Margin="15,0,368,0" -->
+        </Grid>
+        <Grid  x:Name="GridFile" Visibility="Visible" Width="500" HorizontalAlignment="Right">
+            <StackPanel Spacing="15" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <TextBlock Text="File Association" x:Uid="/Setup/textTitle2" FontWeight="SemiBold" FontSize="26" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource BaseTextBlockStyle}" x:Uid="desc2" Text="Open your documents everywhere you want," />
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="desc3" Text="In just two clicks!" />
+                </StackPanel>
+                <TextBlock Style="{StaticResource BaseTextBlockStyle}" x:Uid="Disclaimer" Text="Disclaimer:" />
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="Description" Text="Privacy is private, any type of use of this functionality will not allow anyone access your work, we need this Setting enabled to let the app open your documents easily!" Margin="0,0,0,0" Height="169" />
+            </StackPanel>
+            <!-- Image Source="/Assets/iconDoc.png" HorizontalAlignment="Left" Width="134" -->
+        </Grid>
+    </Grid>
+
+</ContentDialog>
