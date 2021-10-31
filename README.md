@@ -23,11 +23,11 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 * Time & Date
 * Tabs
 * Advanced image capabilities
+* Multi window
 
 ## *Planned* Features
 
 * At a glance page to view and create documents
-* Multi window
 * Full screen sketch
 * Advanced mode with line numbers etc.
 * Sticky notes
