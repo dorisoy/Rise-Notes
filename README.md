@@ -12,13 +12,13 @@ We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent wi
 ## Features Available in Pre-Alpha 1
 
 * TXT and RTF support
+* Auto save your documents
 * Printing capabilities
 * Saving files
 * Fonts and font sizes
 * Images and drawings
 * Sketcher - an overlay which allows you to draw, doodle and annotate allowing your creativity and ideas to shine.
 * Simple Mode
-* Picture in picture
 * Find
 * Time & Date
 * Tabs
