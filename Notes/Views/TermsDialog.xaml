@@ -34,14 +34,14 @@
         </Grid>
         <Grid  x:Name="GridFile" Visibility="Visible" Width="500" HorizontalAlignment="Right">
             <StackPanel Spacing="15" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                <TextBlock Text="File Association" x:Uid="/Setup/textTitle2" FontWeight="SemiBold" FontSize="26" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Uid="/Setup/textTitle2" FontWeight="SemiBold" FontSize="26" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Style="{StaticResource BaseTextBlockStyle}" x:Uid="desc2" Text="Open your documents everywhere you want," />
-                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="desc3" Text="In just two clicks!" />
+                    <TextBlock Style="{StaticResource BaseTextBlockStyle}" x:Uid="/Setup/desc2"/>
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="/Setup/desc3"/>
                 </StackPanel>
-                <TextBlock Style="{StaticResource BaseTextBlockStyle}" x:Uid="Disclaimer" Text="Disclaimer:" />
-                <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="Description" Text="Privacy is private, any type of use of this functionality will not allow anyone access your work, we need this Setting enabled to let the app open your documents easily!" Margin="0,0,0,0" Height="169" />
+                <TextBlock Style="{StaticResource BaseTextBlockStyle}" x:Uid="/Setup/Disclaimer"/>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="/Setup/Description" Margin="0,0,0,0" Height="169" />
             </StackPanel>
             <!-- Image Source="/Assets/iconDoc.png" HorizontalAlignment="Left" Width="134" -->
         </Grid>

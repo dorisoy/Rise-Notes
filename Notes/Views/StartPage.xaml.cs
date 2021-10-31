@@ -53,8 +53,6 @@ namespace Notes
                 AppTitleBar.Visibility = Visibility.Visible;
             }
         }
-        
-        
 
         public void TabView_AddTabButtonClick(TabView sender, object args)
         {
@@ -65,21 +63,22 @@ namespace Notes
         {
             TabViewItem newTab = new TabViewItem();
             Frame frame = new Frame();
-            newTab.Header = " " + "Text tab " + (Tabs.TabItems.Count + 1);
+            newTab.Header = "Text document " + (Tabs.TabItems.Count + 1);
+            newTab.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document };
             newTab.Style = (Style)this.Resources["TabViewItemStyle1"];
-            newTab.Height = 36;
             newTab.Content = frame;
             frame.Navigate(typeof(MainPage));
             Tabs.TabItems.Add(newTab);
         }
+
         public void TxtTab()
         {
             TabViewItem newTab = new TabViewItem();
             Frame frame = new Frame();
-            newTab.Header = " " + "Text tab " + (Tabs.TabItems.Count + 1);
-            newTab.Style = (Style)this.Resources["TabViewItemStyle1"];
-            newTab.Height = 36;
             newTab.Content = frame;
+            newTab.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document };
+            newTab.Header = "Text document " + (Tabs.TabItems.Count + 1);
+            newTab.Style = (Style)this.Resources["TabViewItemStyle1"];
             frame.Navigate(typeof(MainPage));
             Tabs.TabItems.Add(newTab);
             Tabs.SelectedItem = newTab;
@@ -90,7 +89,7 @@ namespace Notes
             sender.TabItems.Remove(args.Tab);
             if (sender.TabItems.Count < 1)
             {
-                Application.Current.Exit();
+                ApplicationView.GetForCurrentView().TryConsolidateAsync();
             }
         }
     }

@@ -26,7 +26,7 @@
             <Button.Content>
                 <StackPanel Height="19" Margin="1,0,0,0">
                     <FontIcon Glyph="&#xF0E3;" HorizontalAlignment="Left" FontSize="16" Height="18" Width="16" Margin="-3,0,0,0"/>
-                    <TextBlock x:Uid="Ch" Text="Changelog" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
+                    <TextBlock x:Uid="/Welcome/Ch" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
                 </StackPanel>
             </Button.Content>
         </Button>
@@ -34,7 +34,7 @@
             <Button.Content>
                 <StackPanel Height="19" Margin="1,0,0,0">
                     <FontIcon Glyph="&#xECA7;" HorizontalAlignment="Left" FontSize="16" Height="18" Width="16" Margin="-3,0,0,0"/>
-                    <TextBlock x:Uid="InPr" Text="Insider Programme" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
+                    <TextBlock x:Uid="/Welcome/InPr" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
                 </StackPanel>
             </Button.Content>
         </Button>
@@ -42,7 +42,7 @@
             <Button.Content>
                 <StackPanel Height="19" Margin="1,0,0,0">
                     <FontIcon Glyph="&#xEC7A;" HorizontalAlignment="Left" FontSize="16" Height="16" Width="16" Margin="-3,2,0,0"/>
-                    <TextBlock x:Uid="Cont" Text="Contribute" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
+                    <TextBlock x:Uid="/Welcome/Cont" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
                 </StackPanel>
             </Button.Content>
         </Button>
@@ -50,15 +50,15 @@
             <Button.Content>
                 <StackPanel Height="19" Margin="1,0,0,0">
                     <FontIcon Glyph="&#xED15;" HorizontalAlignment="Left" FontSize="16" Height="18" Width="16" Margin="-3,0,0,0"/>
-                    <TextBlock x:Uid="Sf" Text="Submit feedback" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
+                    <TextBlock x:Uid="/Welcome/Sf" HorizontalAlignment="Left" Margin="20,-18,0,0" FontSize="13"/>
                 </StackPanel>
             </Button.Content>
         </Button>
         <Image Source="/Assets/IconReadme.png" Margin="0,60,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" Height="48"/>
-        <TextBlock x:Uid="Welc" Text="Welcome to Pre-Alpha 1!" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,140,0,0" FontSize="24" FontWeight="SemiBold"/>
+        <TextBlock x:Uid="/Welcome/Welc" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,140,0,0" FontSize="24" FontWeight="SemiBold"/>
         <RichTextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,185,0,0" FontSize="14" FontWeight="SemiBold" Width="426" TextWrapping="Wrap" TextAlignment="Center" Opacity="0.6">
             <Paragraph>
-                <Run x:Uid="Sub" Text="Remember this is the earliest possible look at our app. Please submit feedback and feature requests!" FontSize="15"/>
+                <Run x:Uid="/Welcome/Sub" FontSize="15"/>
             </Paragraph>
         </RichTextBlock>
     </Grid>

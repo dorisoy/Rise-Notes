@@ -11,24 +11,23 @@
         <Grid Canvas.ZIndex="1">
             <Border x:Name="AppTitleBar"
                 IsHitTestVisible="True"
-                VerticalAlignment="Top"
-                Height="40" Background="#00000000" Margin="16,-2,0,0">
+                VerticalAlignment="Top" Background="#00000000" Margin="16,16,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Image x:Name="AppFontIcon"
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Center"
-                    Source="Assets/Icon.png" 
+                    Source="/Assets/Icon.png" 
                     Width="16" 
-                    Margin="1,15,0,0" Height="17"/>
+                    Margin="0,0,0,0" Height="17"/>
                     <TextBlock x:Name="Title"
                     Text="Rise"
                     VerticalAlignment="Center"
-                    Margin="15,15,0,0"
+                    Margin="15,0,0,0"
                     Style="{StaticResource CaptionTextBlockStyle}" FontWeight="SemiBold"/>
                     <TextBlock x:Name="TitleApp"
                     Text="Notes"
                     VerticalAlignment="Center"
-                    Margin="2,15,0,0"
+                    Margin="2,0,0,0"
                     Style="{StaticResource CaptionTextBlockStyle}" FontWeight="SemiLight"/>
                 </StackPanel>
             </Border>
@@ -39,7 +38,7 @@
                     Spacing="24"
                     VerticalAlignment="Center"
                     Width="400">
-            <TextBlock x:Uid="Welcome" Text="Welcome To"
+            <TextBlock x:Uid="Welcome" Text="Welcome to"
                        HorizontalAlignment="Center"
                        Style="{StaticResource TitleTextBlockStyle}" />
             <Image HorizontalAlignment="Center"

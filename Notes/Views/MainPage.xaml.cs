@@ -62,12 +62,10 @@ namespace Notes
 
             inkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
 
-
+            loadSettings();
 
             Painter.Translation += new Vector3(0, 0, 152);
             gridTools.Translation += new Vector3(0, 0, 132);
-            Tip.Title = resourceLoader.GetString("EdTip/Title");
-            Tip.Subtitle = resourceLoader.GetString("EditTip/Subtitle");
 
             Windows.UI.Core.Preview.SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += async (sender, args) =>
             {
@@ -92,7 +90,7 @@ namespace Notes
                         var result = await saveDialog.ShowAsync();
                         if (result == ContentDialogResult.Secondary)
                         {
-                            Application.Current.Exit();
+                            ApplicationView.GetForCurrentView().TryConsolidateAsync();
                         }
                         if (result == ContentDialogResult.Primary)
                         {
@@ -101,12 +99,11 @@ namespace Notes
                     }
                     catch (Exception)
                     {
-
                     }
                 }
                 else
                 {
-                    Application.Current.Exit();
+                    ApplicationView.GetForCurrentView().TryConsolidateAsync();
                 }
 
             };
@@ -138,10 +135,6 @@ namespace Notes
             {
                 AppTitleBar.Visibility = Visibility.Visible;
             }
-            else
-            {
-
-            }
         }
 
         bool startedApp = true;
@@ -168,8 +161,32 @@ namespace Notes
             }
         }
 
+        private void loadSettings()
+        {
+            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            bool audioV = (bool)localSettings.Values["AudioAct"];
+            bool statusV = (bool)localSettings.Values["StatusAct"];
+            bool autoV = (bool)localSettings.Values["AutoV"];
+            if (audioV == true)
+            {
+                AudioTg.IsChecked = true;
+                ElementSoundPlayer.State = ElementSoundPlayerState.On;
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+            }
+            if (statusV == false)
+            {
+                Details.IsChecked = false;
+                nameBar.Visibility = Visibility.Collapsed;
+            }
+            if (autoV == true)
+            {
+                AutoSave.IsChecked = true;
+            }
+        }
+
         string fileType = ".txt";
         string textMain = "";
+        string directoryText = "";
 
         private async void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
@@ -198,15 +215,22 @@ namespace Notes
                     richTmp.Text = textMain;
                     startedApp = false;
                     changed = false;
+                    directoryText = file.Path;
                     if (fileType == file.FileType)
                     {
                         fileType = ".rtf";
                         fileTypeBar.Text = "Rich Text Document (.rtf)";
+
+                        Painter.Visibility = Visibility.Visible;
+                        EditAnimatedIcon.Visibility = Visibility.Visible;
                     }
                     else
                     {
                         fileType = ".txt";
                         fileTypeBar.Text = "Text Document (.txt)";
+
+                        Painter.Visibility = Visibility.Collapsed;
+                        EditAnimatedIcon.Visibility = Visibility.Collapsed;
                     }
                 }
                 catch (Exception)
@@ -234,11 +258,19 @@ namespace Notes
                 if (fileType == ".rtf")
                 {
                     fileTypeBar.Text = "Rich Text Document (.rtf)";
+                    Painter.Visibility = Visibility.Visible;
+                    EditAnimatedIcon.Visibility = Visibility.Visible;
                 }
                 if (fileType == ".txt")
                 {
                     fileTypeBar.Text = "Text Document (.txt)";
+                    Painter.Visibility = Visibility.Collapsed;
+                    EditAnimatedIcon.Visibility = Visibility.Collapsed;
                 }
+                Edit.Text = resourceLoader.GetString("EditText/Text");
+                Tip.Title = resourceLoader.GetString("EdTip/Title");
+                Tip.Subtitle = resourceLoader.GetString("EdTip/Subtitle");
+                fileName.Text = "New Document";
             }
             else
             {
@@ -253,78 +285,102 @@ namespace Notes
                 var result = await saveDialog.ShowAsync();
                 if (result == ContentDialogResult.Primary)
                 {
-                    if (fileType == ".rtf")
+                    fileName.Text = "New Document";
+                    Edit.Text = resourceLoader.GetString("EditText/Text");
+                    Tip.Title = resourceLoader.GetString("EdTip/Title");
+                    Tip.Subtitle = resourceLoader.GetString("EdTip/Subtitle");
+                    if (directoryText == "")
                     {
-                        FileSavePicker savePicker = new FileSavePicker();
-                        savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-
-
-                        savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
-
-                        savePicker.SuggestedFileName = "New Document";
-
-                        StorageFile file = await savePicker.PickSaveFileAsync();
-                        if (file != null)
+                        if (fileType == ".rtf")
                         {
-                            CachedFileManager.DeferUpdates(file);
+                            FileSavePicker savePicker = new FileSavePicker();
+                            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+                            savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
+                            savePicker.SuggestedFileName = "New Document";
 
-                            using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                                await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                            StorageFile file = await savePicker.PickSaveFileAsync();
+                            if (file != null)
                             {
-                                txt.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
-                                txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
-                                Edit.Opacity = 0;
-                                startedApp = true;
-                                fileType = ".rtf";
-                                fileTypeBar.Text = "Rich Text Document (.rtf)";
+                                CachedFileManager.DeferUpdates(file);
+
+                                using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                                    await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                                {
+                                    txt.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+                                    txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
+                                    Edit.Opacity = 0;
+                                    startedApp = true;
+                                    fileType = ".rtf";
+                                    fileTypeBar.Text = "Rich Text Document (.rtf)";
+                                    Painter.Visibility = Visibility.Visible;
+                                    EditAnimatedIcon.Visibility = Visibility.Visible;
+                                }
+
+
+                                FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                                if (status != FileUpdateStatus.Complete)
+                                {
+                                    Windows.UI.Popups.MessageDialog errorBox =
+                                        new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                                    await errorBox.ShowAsync();
+                                }
                             }
-
-
-                            FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-                            if (status != FileUpdateStatus.Complete)
+                        }
+                        else
+                        {
+                            FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
+                            picker.SuggestedFileName = "New Document";
+                            picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
+                            StorageFile file = await picker.PickSaveFileAsync();
+                            if (file != null)
                             {
-                                Windows.UI.Popups.MessageDialog errorBox =
-                                    new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
-                                await errorBox.ShowAsync();
+                                CachedFileManager.DeferUpdates(file);
+                                string fileContent = textMain;
+                                await FileIO.WriteTextAsync(file, fileContent);
+
+                                FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
+                                if (updateStatus == FileUpdateStatus.Complete)
+                                {
+                                    txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
+                                    Edit.Opacity = 0;
+                                    startedApp = true;
+                                    fileType = ".txt";
+                                    fileTypeBar.Text = "Text Document (.txt)";
+                                    txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
+                                    startedApp = true;
+                                    Painter.Visibility = Visibility.Collapsed;
+                                    EditAnimatedIcon.Visibility = Visibility.Collapsed;
+                                }
                             }
                         }
                     }
                     else
                     {
-                        FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
-                        picker.SuggestedFileName = "New Document";
-                        picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-                        StorageFile file = await picker.PickSaveFileAsync();
-                        if (file != null)
-                        {
-                            CachedFileManager.DeferUpdates(file);
-                            string fileContent = textMain;
-                            await FileIO.WriteTextAsync(file, fileContent);
-
-                            FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
-                            if (updateStatus == FileUpdateStatus.Complete)
-                            {
-                                txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
-                                Edit.Opacity = 0;
-                                startedApp = true;
-                                fileType = ".txt";
-                                fileTypeBar.Text = "Text Document (.txt)";
-                                txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
-                                startedApp = true;
-                            }
-                        }
+                        StorageFile textFile = await StorageFile.GetFileFromPathAsync(directoryText);
+                        var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
+                        textMain, Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
+                        await Windows.Storage.FileIO.WriteBufferAsync(textFile, buffer);
+                        txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
+                        richTmp.Text = textMain;
+                        startedApp = false;
+                        changed = false;
+                        Edit.Opacity = 0;
                     }
                 }
-
                 if (result == ContentDialogResult.Secondary)
                 {
+                    fileName.Text = "New Document";
                     if (fileType == ".rtf")
                     {
                         fileTypeBar.Text = "Rich Text Document (.rtf)";
+                        Painter.Visibility = Visibility.Visible;
+                        EditAnimatedIcon.Visibility = Visibility.Visible;
                     }
                     if (fileType == ".txt")
                     {
                         fileTypeBar.Text = "Text Document (.txt)";
+                        Painter.Visibility = Visibility.Collapsed;
+                        EditAnimatedIcon.Visibility = Visibility.Collapsed;
                     }
                     txt.TextDocument.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, "");
                     Edit.Opacity = 0;
@@ -335,132 +391,169 @@ namespace Notes
 
         private async void Save()
         {
-            if (fileType == ".rtf")
+            if (directoryText == "")
             {
-                FileSavePicker savePicker = new FileSavePicker();
-                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-
-
-                savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
-
-                savePicker.SuggestedFileName = "New Document";
-
-                StorageFile file = await savePicker.PickSaveFileAsync();
-                if (file != null)
+                if (fileType == ".rtf")
                 {
-                    CachedFileManager.DeferUpdates(file);
+                    FileSavePicker savePicker = new FileSavePicker();
+                    savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
-                    using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                        await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                    savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
+
+                    savePicker.SuggestedFileName = "New Document";
+
+                    StorageFile file = await savePicker.PickSaveFileAsync();
+                    if (file != null)
                     {
-                        txt.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
-                        txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
-                        richTmp.Text = textMain;
-                        startedApp = false;
-                        changed = false;
-                        Edit.Opacity = 0;
-                        fileName.Text = file.Name;
-                        var Tb = new StartPage();
-                        var selectedTabViewItem = (TabViewItem)Tb.Tabs.SelectedItem;
-                        if (selectedTabViewItem == null) return;
-                        selectedTabViewItem.Header = file.Name;
+                        CachedFileManager.DeferUpdates(file);
+
+                        using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                            await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                        {
+                            txt.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+                            txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
+                            richTmp.Text = textMain;
+                            startedApp = false;
+                            changed = false;
+                            Edit.Opacity = 0;
+                            fileName.Text = file.Name;
+                            directoryText = file.Path;
+                            var Tb = new StartPage();
+                            var selectedTabViewItem = (TabViewItem)Tb.Tabs.SelectedItem;
+                            if (selectedTabViewItem == null) return;
+                            selectedTabViewItem.Header = file.Name;
+                        }
+
+
+                        FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                        if (status != FileUpdateStatus.Complete)
+                        {
+                            Windows.UI.Popups.MessageDialog errorBox =
+                                new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                            await errorBox.ShowAsync();
+                        }
                     }
 
-
-                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-                    if (status != FileUpdateStatus.Complete)
+                    if (file != null)
                     {
-                        Windows.UI.Popups.MessageDialog errorBox =
-                            new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
-                        await errorBox.ShowAsync();
+                        fileName.Text = file.Name;
                     }
                 }
-
-                if (file != null)
+                else
                 {
-                    fileName.Text = file.Name;
+                    FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
+                    picker.SuggestedFileName = "New Document";
+                    picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
+                    StorageFile file = await picker.PickSaveFileAsync();
+                    if (file != null)
+                    {
+                        CachedFileManager.DeferUpdates(file);
+                        string fileContent = textMain;
+                        await FileIO.WriteTextAsync(file, fileContent);
+
+                        FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
+                        if (updateStatus == FileUpdateStatus.Complete)
+                        {
+                            txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
+                            richTmp.Text = textMain;
+                            startedApp = false;
+                            changed = false;
+                            Edit.Opacity = 0;
+                            fileName.Text = file.Name;
+                            directoryText = file.Path;
+                            var Tb = new StartPage();
+                            var selectedTabViewItem = (TabViewItem)Tb.Tabs.SelectedItem;
+                            if (selectedTabViewItem == null) return;
+                            selectedTabViewItem.Header = file.Name;
+                        }
+                    }
                 }
             }
             else
             {
-                FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
-                picker.SuggestedFileName = "New Document";
-                picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-                StorageFile file = await picker.PickSaveFileAsync();
-                if (file != null)
+                try
                 {
-                    CachedFileManager.DeferUpdates(file);
-                    string fileContent = textMain;
-                    await FileIO.WriteTextAsync(file, fileContent);
-
-                    FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
-                    if (updateStatus == FileUpdateStatus.Complete)
-                    {
-                        txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
-                        richTmp.Text = textMain;
-                        startedApp = false;
-                        changed = false;
-                        Edit.Opacity = 0;
-                        fileName.Text = file.Name;
-                        var Tb = new StartPage();
-                        var selectedTabViewItem = (TabViewItem)Tb.Tabs.SelectedItem;
-                        if (selectedTabViewItem == null) return;
-                        selectedTabViewItem.Header = file.Name;
-                    }
+                    StorageFile textFile = await StorageFile.GetFileFromPathAsync(directoryText);
+                    var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
+                    textMain, Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
+                    await Windows.Storage.FileIO.WriteBufferAsync(textFile, buffer);
+                    txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
+                    richTmp.Text = textMain;
+                    startedApp = false;
+                    changed = false;
+                    Edit.Opacity = 0;
+                }
+                catch
+                {
+                    bool result = await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-broadfilesystemaccess"));
                 }
             }
         }
 
         private async void SaveExit()
         {
-            if (fileType == ".rtf")
+            if (directoryText == "")
             {
-                FileSavePicker savePicker = new FileSavePicker();
-                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-
-
-                savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
-
-                savePicker.SuggestedFileName = "New Document";
-
-                StorageFile file = await savePicker.PickSaveFileAsync();
-                if (file != null)
+                if (fileType == ".rtf")
                 {
-                    CachedFileManager.DeferUpdates(file);
+                    FileSavePicker savePicker = new FileSavePicker();
+                    savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
-                    using (IRandomAccessStream randAccStream =
-                        await file.OpenAsync(FileAccessMode.ReadWrite))
+
+                    savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
+
+                    savePicker.SuggestedFileName = "New Document";
+
+                    StorageFile file = await savePicker.PickSaveFileAsync();
+                    if (file != null)
                     {
-                        txt.Document.SaveToStream(TextGetOptions.UseObjectText, randAccStream);
+                        CachedFileManager.DeferUpdates(file);
 
+                        using (IRandomAccessStream randAccStream =
+                            await file.OpenAsync(FileAccessMode.ReadWrite))
+                        {
+                            txt.Document.SaveToStream(TextGetOptions.UseObjectText, randAccStream);
+                        }
+
+
+                        FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                        if (status != FileUpdateStatus.Complete)
+                        {
+                            Windows.UI.Popups.MessageDialog errorBox =
+                                new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                            await errorBox.ShowAsync();
+                        }
                     }
-
-
-                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-                    if (status != FileUpdateStatus.Complete)
+                }
+                else
+                {
+                    FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
+                    picker.SuggestedFileName = "New Document";
+                    picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
+                    StorageFile file = await picker.PickSaveFileAsync();
+                    if (file != null)
                     {
-                        Windows.UI.Popups.MessageDialog errorBox =
-                            new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
-                        await errorBox.ShowAsync();
+                        CachedFileManager.DeferUpdates(file);
+                        string fileContent = textMain;
+                        await FileIO.WriteTextAsync(file, fileContent);
+
+                        FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
                     }
                 }
             }
             else
             {
-                FileSavePicker picker = new Windows.Storage.Pickers.FileSavePicker();
-                picker.SuggestedFileName = "New Document";
-                picker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-                StorageFile file = await picker.PickSaveFileAsync();
-                if (file != null)
-                {
-                    CachedFileManager.DeferUpdates(file);
-                    string fileContent = textMain;
-                    await FileIO.WriteTextAsync(file, fileContent);
-
-                    FileUpdateStatus updateStatus = await CachedFileManager.CompleteUpdatesAsync(file);
-                }
+                StorageFile textFile = await StorageFile.GetFileFromPathAsync(directoryText);
+                var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
+                textMain, Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
+                await Windows.Storage.FileIO.WriteBufferAsync(textFile, buffer);
+                txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
+                richTmp.Text = textMain;
+                startedApp = false;
+                changed = false;
+                Edit.Opacity = 0;
             }
-            Application.Current.Exit();
+            ApplicationView.GetForCurrentView().TryConsolidateAsync();
         }
 
         private List<string> fonts = new List<string>()
@@ -539,11 +632,6 @@ namespace Notes
             FileAct.Visibility = Visibility.Visible;
             EditAnimatedIcon.Visibility = Visibility.Visible;
         }
-
-
-
-
-
         public async Task<string> GetFileText(string filePath)
         {
             var stringContent = "";
@@ -554,9 +642,6 @@ namespace Notes
             {
                 stringContent = await Windows.Storage.FileIO.ReadTextAsync(file, Windows.Storage.Streams.UnicodeEncoding.Utf8);
             }
-
-
-
             return stringContent;
         }
 
@@ -725,14 +810,17 @@ namespace Notes
 
         private void MenuFlyoutItem_Click_7(object sender, RoutedEventArgs e)
         {
+            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             if (AudioTg.IsChecked)
             {
+                localSettings.Values["AudioAct"] = true;
                 ElementSoundPlayer.State = ElementSoundPlayerState.On;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
             }
             else
             {
+                localSettings.Values["AudioAct"] = false;
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             }
@@ -744,6 +832,7 @@ namespace Notes
         private void MenuFlyoutItem_Click_8(object sender, RoutedEventArgs e)
         {
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+            
             if (SimpleMode == true)
             {
                 SimpleMode = false;
@@ -773,7 +862,6 @@ namespace Notes
         private void MenuFlyoutItem_Click_9(object sender, RoutedEventArgs e)
         {
             FindBoxHighlightMatches();
-
         }
 
         private async void FindBoxHighlightMatches()
@@ -808,13 +896,6 @@ namespace Notes
                     }
                 }
             }
-
-            else
-            {
-
-            }
-
-
         }
 
         private void FindBoxRemoveHighlights()
@@ -852,30 +933,49 @@ namespace Notes
             }
         }
 
-        private void txt_TextChanged(object sender, RoutedEventArgs e)
+        private async void txt_TextChanged(object sender, RoutedEventArgs e)
         {
-            if (fileType == ".txt")
+            if (AutoSave.IsChecked == true)
             {
-                Painter.Visibility = Visibility.Collapsed;
-                EditAnimatedIcon.Visibility = Visibility.Collapsed;
+                if (changed == true)
+                {
+                    if (directoryText != "")
+                    {
+                        var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+                        Edit.Text = resourceLoader.GetString("NotSaved/Text");
+                        Tip.Title = resourceLoader.GetString("SaveTip/Title");
+                        Tip.Subtitle = resourceLoader.GetString("SaveTip/Subtitle");
+                        try
+                        {
+                            StorageFile textFile = await StorageFile.GetFileFromPathAsync(directoryText);
+                            var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
+                            textMain, Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
+                            await Windows.Storage.FileIO.WriteBufferAsync(textFile, buffer);
+                            txt.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out textMain);
+                            richTmp.Text = textMain;
+                            Edit.Opacity = 0;
+                        }
+                        catch { }
+                    }
+                }
             }
             else
             {
-                Painter.Visibility = Visibility.Visible;
-                EditAnimatedIcon.Visibility = Visibility.Visible;
+                var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+                Edit.Text = resourceLoader.GetString("EditText/Text");
+                Tip.Title = resourceLoader.GetString("EdTip/Title");
+                Tip.Subtitle = resourceLoader.GetString("EdTip/Subtitle");
             }
-            if (changed == false)
+
+            if (directoryText == "")
             {
-                Undo.IsEnabled = false;
+                AutoSave.IsEnabled = false;
             }
             else
             {
-                Undo.IsEnabled = true;
+                AutoSave.IsEnabled = true;
             }
-            if (changes == 0)
-            {
-                Redo.IsEnabled = false;
-            }
+
             string textStart;
             txt.Document.GetText(TextGetOptions.UseObjectText, out textStart);
             txt.Document.GetText(TextGetOptions.UseObjectText, out textMain);
@@ -905,23 +1005,31 @@ namespace Notes
             if (changed == true)
             {
                 Edit.Opacity = 0.6;
+                Undo.IsEnabled = true;
             }
             else
             {
                 Edit.Opacity = 0;
+                if (directoryText == "")
+                {
+                    Undo.IsEnabled = false;
+                }
             }
         }
 
         private void Details_Click(object sender, RoutedEventArgs e)
         {
+            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Thickness margin = contentFrame.Margin;
             if (Details.IsChecked)
             {
+                localSettings.Values["StatusAct"] = true;
                 nameBar.Visibility = Visibility.Visible;
                 margin.Bottom = 30;
             }
             else
             {
+                localSettings.Values["StatusAct"] = false;
                 nameBar.Visibility = Visibility.Collapsed;
                 margin.Bottom = 0;
             }
@@ -932,13 +1040,11 @@ namespace Notes
             if (Painter.Visibility == Visibility.Collapsed)
             {
                 Painter.Visibility = Visibility.Visible;
-                tools.Visibility = Visibility.Visible;
                 popIn.Begin();
             }
             else
             {
                 Painter.Visibility = Visibility.Collapsed;
-                tools.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -1141,10 +1247,6 @@ namespace Notes
                     suitableItems.Add(font);
                 }
             }
-            if (suitableItems.Count == 0)
-            {
-
-            }
             FontBox.ItemsSource = suitableItems;
         }
 
@@ -1286,12 +1388,72 @@ namespace Notes
         {
             fileType = ".txt";
             NewSave();
+            directoryText = "";
         }
 
         private void MenuFlyoutItem_Click_6(object sender, RoutedEventArgs e)
         {
             fileType = ".rtf";
             NewSave();
+            directoryText = "";
+        }
+
+        private void AutoSave_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            if (AutoSave.IsChecked == true)
+            {
+                localSettings.Values["AutoV"] = true;
+            }
+            else
+            {
+                localSettings.Values["AutoV"] = false;
+            }
+        }
+
+        private async void MenuFlyoutItem_Click_10(object sender, RoutedEventArgs e)
+        {
+            FileOpenPicker picker = new FileOpenPicker();
+            picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            picker.FileTypeFilter.Add(".png");
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+
+            StorageFile file = await picker.PickSingleFileAsync();
+
+            if (file != null)
+            {
+                using (IRandomAccessStream randAccStream =
+                    await file.OpenAsync(FileAccessMode.Read))
+                using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
+                {
+                    var properties = await file.Properties.GetImagePropertiesAsync();
+                    int width = (int)properties.Width;
+                    int height = (int)properties.Height;
+                    txt.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, "img", randAccStream);
+                }
+            }
+        }
+
+        private async Task<bool> OpenPageAsWindowAsync(Type t)
+        {
+            var view = CoreApplication.CreateNewView();
+            int id = 0;
+
+            await view.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                var frame = new Frame();
+                frame.Navigate(t, null);
+                Window.Current.Content = frame;
+                Window.Current.Activate();
+                id = ApplicationView.GetForCurrentView().Id;
+            });
+
+            return await ApplicationViewSwitcher.TryShowAsStandaloneAsync(id);
+        }
+        private async void NewWin_Click(object sender, RoutedEventArgs e)
+        {
+            await OpenPageAsWindowAsync(typeof(StartPage));
         }
     }
 }

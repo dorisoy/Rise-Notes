@@ -123,6 +123,9 @@
   <data name="AudioActivated.Text" xml:space="preserve">
     <value>Navigation sounds</value>
   </data>
+  <data name="AutoSave.Text" xml:space="preserve">
+    <value>Auto Save</value>
+  </data>
   <data name="chan.Content" xml:space="preserve">
     <value>Change channel</value>
   </data>
@@ -135,7 +138,7 @@
   <data name="EditText.Text" xml:space="preserve">
     <value>Modified</value>
   </data>
-  <data name="EditTip.Subtitle" xml:space="preserve">
+  <data name="EdTip.Subtitle" xml:space="preserve">
     <value>You have made changes to your file and you need to save it. If you close without saving, you may lose work.</value>
   </data>
   <data name="EdTip.Title" xml:space="preserve">
@@ -152,6 +155,12 @@
   </data>
   <data name="Fa.Text" xml:space="preserve">
     <value>File Association</value>
+  </data>
+  <data name="FC.Text" xml:space="preserve">
+    <value>From Clipboard</value>
+  </data>
+  <data name="FD.Text" xml:space="preserve">
+    <value>From Device</value>
   </data>
   <data name="Feedback.Content" xml:space="preserve">
     <value>Feedback</value>
@@ -180,6 +189,12 @@
   <data name="New.Label" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="newWin.Text" xml:space="preserve">
+    <value>New Window</value>
+  </data>
+  <data name="NotSaved.Text" xml:space="preserve">
+    <value>Not Saved</value>
+  </data>
   <data name="Open.Text" xml:space="preserve">
     <value>Open</value>
   </data>
@@ -197,6 +212,12 @@
   </data>
   <data name="SaveFile.Text" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="SaveTip.Subtitle" xml:space="preserve">
+    <value>Your file is still not autosaved, you need to close all the other programs that are currently using your document, or you need to activate File association.</value>
+  </data>
+  <data name="SaveTip.Title" xml:space="preserve">
+    <value>What does "Not Saved" mean?</value>
   </data>
   <data name="Search.Text" xml:space="preserve">
     <value>Find</value>
@@ -218,6 +239,12 @@
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="TC.Text" xml:space="preserve">
+    <value>To Clipboard</value>
+  </data>
+  <data name="TD.Text" xml:space="preserve">
+    <value>To Device</value>
   </data>
   <data name="timeDate.Text" xml:space="preserve">
     <value>Time and Date</value>

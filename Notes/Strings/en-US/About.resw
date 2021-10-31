@@ -132,8 +132,17 @@
   <data name="GetG.Content" xml:space="preserve">
     <value>Get goodies</value>
   </data>
+  <data name="MC.Text" xml:space="preserve">
+    <value>Most recent changes: Tabs, sketcher, new UI, Autosave</value>
+  </data>
   <data name="More.Text" xml:space="preserve">
     <value>More</value>
+  </data>
+  <data name="MoreCredits.Content" xml:space="preserve">
+    <value>More Credits</value>
+  </data>
+  <data name="RC.Text" xml:space="preserve">
+    <value>Recent changes</value>
   </data>
   <data name="Social.Text" xml:space="preserve">
     <value>Social Media</value>
@@ -145,7 +154,7 @@
     <value>Terms &amp; Conditions</value>
   </data>
   <data name="Ver.Subtitle" xml:space="preserve">
-    <value>Released: 25th October 2021
+    <value>Released: October 31st 2021
 Internal Version: 0.0.1.0
 Edition: Bloom
 

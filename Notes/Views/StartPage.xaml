@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
-    xmlns:primitiveContract7Present="using:Microsoft.UI.Xaml.Controls.Primitives?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)" MinWidth="765" MinHeight="620">
+    xmlns:primitiveContract7Present="using:Microsoft.UI.Xaml.Controls.Primitives?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
@@ -83,8 +83,13 @@
 
                                     <ContentPresenter x:Name="LeftContentPresenter" ContentTemplate="{TemplateBinding TabStripHeaderTemplate}" Content="{TemplateBinding TabStripHeader}" Grid.Column="0"/>
                                     <primitiveContract7Present:TabViewListView x:Name="TabListView" AllowDrop="{TemplateBinding AllowDropTabs}" CanReorderItems="{TemplateBinding CanReorderTabs}" Grid.Column="1" CanDragItems="{TemplateBinding CanDragTabs}" ItemTemplate="{TemplateBinding TabItemTemplate}" ItemsSource="{TemplateBinding TabItemsSource}" ItemTemplateSelector="{TemplateBinding TabItemTemplateSelector}" Padding="{TemplateBinding Padding}"/>
-                                    <Border Grid.Column="2" Padding="{ThemeResource TabViewItemAddButtonContainerPadding}" VerticalAlignment="Bottom" Visibility="{Binding IsAddTabButtonVisible, RelativeSource={RelativeSource Mode=TemplatedParent}}" Margin="0,0,0,3" Height="29" Width="29">
-                                        <Button x:Name="AddButton" Command="{TemplateBinding AddTabButtonCommand}" CommandParameter="{TemplateBinding AddTabButtonCommandParameter}" Content="&#xE109;" HighContrastAdjustment="None" HorizontalAlignment="Stretch" IsTextScaleFactorEnabled="False" VerticalAlignment="Stretch" Margin="-3,0,0,-3" FontFamily="Segoe Fluent Icons" Padding="5.5,5.6,5,5" Background="#00808080" BorderThickness="0,0,0,0" FontSize="13" UseLayoutRounding="False" Height="30" Width="30" CornerRadius="5,5,5,5">
+                                    <Border Grid.Column="2" Padding="{ThemeResource TabViewItemAddButtonContainerPadding}" VerticalAlignment="Bottom" Visibility="{Binding IsAddTabButtonVisible, RelativeSource={RelativeSource Mode=TemplatedParent}}" Margin="0,0,0,2" Height="31" Width="31">
+                                        <Button x:Name="AddButton" Command="{TemplateBinding AddTabButtonCommand}" CommandParameter="{TemplateBinding AddTabButtonCommandParameter}" HighContrastAdjustment="None" HorizontalAlignment="Stretch" IsTextScaleFactorEnabled="False" VerticalAlignment="Stretch" Margin="-3,0,0,-3" FontFamily="Segoe Fluent Icons" Padding="5.5,5.6,5,5" Background="{StaticResource TextBoxButtonBackgroundThemeBrush}" BorderThickness="0,0,0,0" FontSize="13" UseLayoutRounding="False" CornerRadius="5,5,5,5">
+                                            <Button.Content>
+                                                <Viewbox Width="12" Height="12">
+                                                    <SymbolIcon Symbol="Add" />
+                                                </Viewbox>
+                                            </Button.Content>
                                             <Button.BorderBrush>
                                                 <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                                                     <LinearGradientBrush.RelativeTransform>
@@ -118,7 +123,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="{ThemeResource ControlCornerRadius}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="3,3,3,3" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Normal"/>
@@ -159,7 +164,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="muxc:TabViewItem">
-                            <Grid x:Name="LayoutRoot" Padding="{TemplateBinding Padding}" CornerRadius="6,6,8,8" Background="#00B87171" Height="34" Margin="0,-1,0,0" BorderBrush="#0C000000">
+                            <Grid x:Name="LayoutRoot" Padding="{TemplateBinding Padding}" Background="#00B87171" CornerRadius="5,5,5,5" Height="35" Margin="0,-1,0,0" BorderThickness="1,1,1,1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition x:Name="LeftColumn" Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -184,11 +189,6 @@
                                         <VisualState x:Name="Pressed">
                                             <VisualState.Setters>
                                                 <Setter Target="TabContainer.Background" Value="{ThemeResource tabColor}"/>
-                                                <Setter Target="TabContainer.BorderThickness">
-                                                    <Setter.Value>
-                                                        <Thickness>1,1,1,1</Thickness>
-                                                    </Setter.Value>
-                                                </Setter>
                                                 <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource TabViewItemHeaderForegroundPressed}"/>
                                                 <Setter Target="IconControl.Foreground" Value="{ThemeResource TabViewItemIconForegroundPressed}"/>
                                                 <Setter Target="CloseButton.Background" Value="{ThemeResource TabViewItemHeaderPressedCloseButtonBackground}"/>
@@ -197,6 +197,7 @@
                                         </VisualState>
                                         <VisualState x:Name="Selected">
                                             <VisualState.Setters>
+                                                <Setter Target="LayoutRoot.BorderBrush" Value="#26767676"/>
                                                 <Setter Target="RightRadiusRenderArc.Visibility" Value="Visible"/>
                                                 <Setter Target="RightRadiusRenderTriangle.Visibility" Value="Visible"/>
                                                 <Setter Target="RightRadiusRenderTriangle.Fill" Value="{ThemeResource TabViewItemHeaderBackgroundSelected}"/>
@@ -205,11 +206,6 @@
                                                 <Setter Target="LeftRadiusRenderTriangle.Fill" Value="{ThemeResource TabViewItemHeaderBackgroundSelected}"/>
                                                 <Setter Target="TabContainer.Margin" Value="{ThemeResource TabViewSelectedItemHeaderMargin}"/>
                                                 <Setter Target="TabContainer.BorderBrush" Value="{ThemeResource TabViewSelectedItemBorderBrush}"/>
-                                                <Setter Target="TabContainer.BorderThickness">
-                                                    <Setter.Value>
-                                                        <Thickness>1,1,1,1</Thickness>
-                                                    </Setter.Value>
-                                                </Setter>
                                                 <Setter Target="TabContainer.Background" Value="{ThemeResource tabColor}"/>
                                                 <Setter Target="TabContainer.Padding" Value="{ThemeResource TabViewSelectedItemHeaderPadding}"/>
                                                 <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource TabViewItemHeaderForegroundSelected}"/>
@@ -222,6 +218,7 @@
                                         </VisualState>
                                         <VisualState x:Name="PointerOverSelected">
                                             <VisualState.Setters>
+                                                <Setter Target="LayoutRoot.BorderBrush" Value="#26767676"/>
                                                 <Setter Target="RightRadiusRenderArc.Visibility" Value="Visible"/>
                                                 <Setter Target="RightRadiusRenderTriangle.Visibility" Value="Visible"/>
                                                 <Setter Target="RightRadiusRenderTriangle.Fill" Value="{ThemeResource TabViewItemHeaderBackgroundSelected}"/>
@@ -230,11 +227,6 @@
                                                 <Setter Target="LeftRadiusRenderTriangle.Fill" Value="{ThemeResource TabViewItemHeaderBackgroundSelected}"/>
                                                 <Setter Target="TabContainer.Margin" Value="{ThemeResource TabViewSelectedItemHeaderMargin}"/>
                                                 <Setter Target="TabContainer.BorderBrush" Value="{ThemeResource TabViewSelectedItemBorderBrush}"/>
-                                                <Setter Target="TabContainer.BorderThickness">
-                                                    <Setter.Value>
-                                                        <Thickness>1,1,1,1</Thickness>
-                                                    </Setter.Value>
-                                                </Setter>
                                                 <Setter Target="TabContainer.Background" Value="{ThemeResource tabColor}"/>
                                                 <Setter Target="TabContainer.Padding" Value="{ThemeResource TabViewSelectedItemHeaderPadding}"/>
                                                 <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource TabViewItemHeaderForegroundSelected}"/>
@@ -247,6 +239,7 @@
                                         </VisualState>
                                         <VisualState x:Name="PressedSelected">
                                             <VisualState.Setters>
+                                                <Setter Target="LayoutRoot.BorderBrush" Value="#26767676"/>
                                                 <Setter Target="RightRadiusRenderArc.Visibility" Value="Visible"/>
                                                 <Setter Target="RightRadiusRenderTriangle.Visibility" Value="Visible"/>
                                                 <Setter Target="RightRadiusRenderTriangle.Fill" Value="{ThemeResource TabViewItemHeaderBackgroundSelected}"/>
@@ -255,7 +248,6 @@
                                                 <Setter Target="LeftRadiusRenderTriangle.Fill" Value="{ThemeResource TabViewItemHeaderBackgroundSelected}"/>
                                                 <Setter Target="TabContainer.Margin" Value="{ThemeResource TabViewSelectedItemHeaderMargin}"/>
                                                 <Setter Target="TabContainer.BorderBrush" Value="{ThemeResource TabViewSelectedItemBorderBrush}"/>
-                                                <Setter Target="TabContainer.BorderThickness" Value="{ThemeResource TabViewSelectedItemBorderThickness}"/>
                                                 <Setter Target="TabContainer.Background" Value="{ThemeResource tabColor}"/>
                                                 <Setter Target="TabContainer.Padding" Value="{ThemeResource TabViewSelectedItemHeaderPadding}"/>
                                                 <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource TabViewItemHeaderForegroundSelected}"/>
@@ -390,17 +382,23 @@
                                 <Path x:Name="RightRadiusRenderArc" Grid.Column="2" Data="M0 0C0 1.19469 0.523755 2.26706 1.35418 3H4C2.34315 3 1 1.65685 1 0H0Z" Fill="{ThemeResource CardStrokeColorDefault}" Height="4" Margin="0,0,-4,0" VerticalAlignment="Bottom" Visibility="Collapsed" Width="4" x:Load="False"/>
                                 <Path x:Name="RightRadiusRenderTriangle" Grid.Column="2" Data="M4 4H0V0C0 2.20914 1.79086 4 4 4Z" Fill="{ThemeResource TabViewItemHeaderBackgroundSelected}" Margin="0,0,-4,0" VerticalAlignment="Bottom" Visibility="Collapsed" x:Load="False"/>
                                 <Border x:Name="TabSeparator" BorderThickness="1" BorderBrush="{ThemeResource TabViewItemSeparator}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,0,8" Width="1" Height="18"/>
-                                <Grid x:Name="TabContainer" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{Binding Converter={StaticResource TopCornerRadiusFilterConverter}, Source={ThemeResource OverlayCornerRadius}}" Grid.Column="1" FocusVisualMargin="{TemplateBinding FocusVisualMargin}" Control.IsTemplateFocusTarget="True" Padding="{ThemeResource TabViewItemHeaderPadding}">
+                                <Grid x:Name="TabContainer" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5,5,5,5" Grid.Column="1" FocusVisualMargin="{TemplateBinding FocusVisualMargin}" Control.IsTemplateFocusTarget="True" Padding="{ThemeResource TabViewItemHeaderPadding}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition x:Name="IconColumn" Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Viewbox x:Name="IconBox" MaxHeight="{ThemeResource TabViewItemHeaderIconSize}" Margin="{ThemeResource TabViewItemHeaderIconMargin}" MaxWidth="{ThemeResource TabViewItemHeaderIconSize}">
-                                        <ContentControl x:Name="IconControl" Content="{Binding TabViewTemplateSettings.IconElement, RelativeSource={RelativeSource Mode=TemplatedParent}}" Foreground="{ThemeResource TabViewItemIconForeground}" HighContrastAdjustment="None" IsTabStop="False"/>
+                                        <ContentControl x:Name="IconControl" Content="{Binding TabViewTemplateSettings.IconElement, RelativeSource={RelativeSource Mode=TemplatedParent}}" Foreground="{ThemeResource TabViewItemIconForeground}" HighContrastAdjustment="None" IsTabStop="False" FontSize="10"/>
                                     </Viewbox>
-                                    <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="" ContentTransitions="{TemplateBinding ContentTransitions}" Grid.Column="1" FontWeight="{TemplateBinding FontWeight}" Foreground="{ThemeResource TabViewItemHeaderForeground}" FontSize="{ThemeResource TabViewItemHeaderFontSize}" HighContrastAdjustment="None" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" OpticalMarginAlignment="TrimSideBearings" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                    <Button x:Name="CloseButton" Content="&#xE711;" Grid.Column="2" HighContrastAdjustment="None" IsTextScaleFactorEnabled="False" IsTabStop="False" Margin="{ThemeResource TabViewItemHeaderCloseMargin}" Style="{ThemeResource TabViewCloseButtonStyle}" FontSize="11" Padding="10,5,10,5" Height="24"/>
+                                    <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{Binding title}" ContentTransitions="{TemplateBinding ContentTransitions}" Grid.Column="1" FontWeight="{TemplateBinding FontWeight}" Foreground="{ThemeResource TabViewItemHeaderForeground}" FontSize="13" HighContrastAdjustment="None" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" OpticalMarginAlignment="TrimSideBearings" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="0,-1,0,0"/>
+                                    <Button x:Name="CloseButton" Grid.Column="2" HighContrastAdjustment="None" IsTextScaleFactorEnabled="False" IsTabStop="False" Margin="{ThemeResource TabViewItemHeaderCloseMargin}" Style="{ThemeResource TabViewCloseButtonStyle}" FontSize="12" Padding="10,5,10,5" Height="25" Width="25" FontFamily="Segoe Fluent Icons">
+                                        <Button.Content>
+                                            <Viewbox Width="12" Height="12">
+                                                <SymbolIcon Symbol="Cancel" />
+                                            </Viewbox>
+                                        </Button.Content>
+                                    </Button>
                                 </Grid>
                             </Grid>
                         </ControlTemplate>
@@ -412,24 +410,23 @@
     <Grid>
         <Border x:Name="AppTitleBar" x:FieldModifier="public"
                 IsHitTestVisible="True"
-                VerticalAlignment="Top"
-                Height="37" Background="#00000000" Margin="15,0,0,0">
+                VerticalAlignment="Top" Background="#00000000" Margin="18,18,0,0" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="AppFontIcon"
                     HorizontalAlignment="Left" 
-                    VerticalAlignment="Center"
-                    Source="Assets/Icon.png" 
+                    VerticalAlignment="Top"
+                    Source="/Assets/Icon.png" 
                     Width="16" 
-                    Margin="1,15,9,0" Height="17"/>
+                    Margin="0,0,0,0" Height="17"/>
             </StackPanel>
         </Border>
-        <muxc:TabView x:Name="Tabs" Style="{StaticResource TabViewStyle1}" Margin="0,0,0,0" AddTabButtonClick="TabView_AddTabButtonClick" x:FieldModifier="public"
+        <muxc:TabView x:Name="Tabs" CloseButtonOverlayMode="OnPointerOver" Style="{StaticResource TabViewStyle1}" Margin="0,0,0,0" AddTabButtonClick="TabView_AddTabButtonClick" x:FieldModifier="public"
                TabCloseRequested="TabView_TabCloseRequested" VerticalAlignment="Stretch" Padding="0,9,5,0" Background="{x:Null}">
             <muxc:TabView.TabStripHeader>
-                <Grid x:Name="ShellTitlebarInset" Background="Transparent" Width="52" />
+                <Grid x:Name="ShellTitlebarInset" Background="Transparent" Width="55"/>
             </muxc:TabView.TabStripHeader>
             <muxc:TabView.TabStripFooter>
-                <Grid x:Name="CustomDragRegion" Background="Transparent" />
+                <Grid x:Name="CustomDragRegion" Background="Transparent"/>
             </muxc:TabView.TabStripFooter>
         </muxc:TabView>
             
