@@ -1,32 +1,33 @@
-# Notes
+![risenotesnewbanner-min](https://user-images.githubusercontent.com/74561130/137600994-d2cc17af-7d6a-4b7f-980b-1bb08274f281.png)
+**Pre-Alpha 1 coming very soon**
 
-![IconReadme](https://user-images.githubusercontent.com/86930621/133638673-afef406b-856d-42dd-99f4-2b2e44e8e6c4.png)
+**Rise Notes** gives new life to interfaces and features you are familiar with. We always try to make our apps beautiful while remaining functional and Rise Notes continues that philosiphy.
 
-WinUI UWP Based Notepad created on VS2019
+## Appearance & Design
 
-![immagine](https://user-images.githubusercontent.com/86930621/133507258-6bae8a7f-7239-47f8-b0e7-4172bb424e77.png)
+We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can see our current design below :D
 
 ![image(4)](https://user-images.githubusercontent.com/86930621/139593351-db0d42b4-646b-46a7-9f8b-1ee571161d06.png)
 
-## Features Available in Pre-Alpha 1
+## Features Available in current commit
 
 * TXT and RTF support
+* Auto save your documents
 * Printing capabilities
 * Saving files
 * Fonts and font sizes
 * Images and drawings
 * Sketcher - an overlay which allows you to draw, doodle and annotate allowing your creativity and ideas to shine.
 * Simple Mode
-* Picture in picture
 * Find
 * Time & Date
 * Tabs
 * Advanced image capabilities
+* Multi window
 
-![immagine](https://user-images.githubusercontent.com/86930621/133507663-d73f289d-80f4-4893-ad91-78e28ad6e65d.png)
+## *Planned* Features
 
 * At a glance page to view and create documents
-* Multi window
 * Full screen sketch
 * Advanced mode with line numbers etc.
 * Sticky notes
@@ -37,13 +38,7 @@ This is free software with no warranty of any kind. Sorry :(
 
 We use the GPL License with a few changed clauses to protect our apps' integrity. Click the GPL License button to see the full license without the changed clauses.
 
-**Changed clauses:**
-
-Users are allowed to freely edit and view the code for their own personal use and recreation. Although, unlike the regular GPL license, we do not allow users to share, distribute or sell our code unless they have our & our contributors permission to do so. Please simply ask and we'll be happy to chat with you. 
-
-[![GPL](https://user-images.githubusercontent.com/74561130/137586878-642d9907-aee4-4b69-bc4a-2c7d1e44540c.png)](https://www.gnu.org/licenses/gpl-3.0.en.html) 
-
-
+[![OurTerms](https://user-images.githubusercontent.com/74561130/137586737-d792a57b-b2b0-410b-bb2a-a06a4da2ab52.png)](https://github.com/Rise-Software/Rise-Notes/blob/bloom_build-(main)/LICENSE) 
 
 ## Downloads, Contribute and the Insider Program
 
