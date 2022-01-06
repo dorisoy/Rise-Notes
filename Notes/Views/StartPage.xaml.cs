@@ -1,12 +1,11 @@
 ﻿using Microsoft.UI.Xaml.Controls;
-using System;
+using Notes.Model;
 using Windows.ApplicationModel.Core;
-using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Data;
 
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -63,7 +62,7 @@ namespace Notes
         {
             TabViewItem newTab = new TabViewItem();
             Frame frame = new Frame();
-            newTab.Header = "Text document " + (Tabs.TabItems.Count + 1);
+            newTab.Header = "Text document 1";
             newTab.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document };
             newTab.Style = (Style)this.Resources["TabViewItemStyle1"];
             newTab.Content = frame;

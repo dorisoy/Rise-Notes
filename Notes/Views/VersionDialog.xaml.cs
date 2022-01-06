@@ -80,7 +80,7 @@ namespace Notes.Views
 
         private async void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            var uriBing = new Uri(@"https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1URFAxTkRNMEZMVEsxWTlWRE9SRkVHWElOUi4u");
+            var uriBing = new Uri(@"https://github.com/Rise-Software/Rise-Notes/issues/new/choose");
 
             var success = await Windows.System.Launcher.LaunchUriAsync(uriBing);
 

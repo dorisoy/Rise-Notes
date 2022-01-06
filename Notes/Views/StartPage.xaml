@@ -420,6 +420,7 @@
                     Margin="0,0,0,0" Height="17"/>
             </StackPanel>
         </Border>
+        <TextBlock Text="{Binding nsì}"/>
         <muxc:TabView x:Name="Tabs" CloseButtonOverlayMode="OnPointerOver" Style="{StaticResource TabViewStyle1}" Margin="0,0,0,0" AddTabButtonClick="TabView_AddTabButtonClick" x:FieldModifier="public"
                TabCloseRequested="TabView_TabCloseRequested" VerticalAlignment="Stretch" Padding="0,9,5,0" Background="{x:Null}">
             <muxc:TabView.TabStripHeader>

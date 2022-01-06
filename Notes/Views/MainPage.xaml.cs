@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Controls;
+using Notes.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -232,6 +233,8 @@ namespace Notes
                         Painter.Visibility = Visibility.Collapsed;
                         EditAnimatedIcon.Visibility = Visibility.Collapsed;
                     }
+                    var TabTitle = new tabTitle();
+                    TabTitle.tit = file.Name;
                 }
                 catch (Exception)
                 {
@@ -1336,29 +1339,22 @@ namespace Notes
         {
             bool isDouble = double.TryParse(sender.Text, out double newValue);
 
-            // Set the selected item if:
-            // - The value successfully parsed to double AND
-            // - The value is in the list of sizes OR is a custom value between 8 and 100
             if (isDouble && (Size.Contains(newValue) || (newValue < 72 && newValue > 8)))
             {
-                // Update the SelectedItem to the new value. 
                 sender.SelectedItem = newValue;
             }
             else
             {
-                // If the item is invalid, reject it and revert the text. 
                 sender.Text = sender.SelectedValue.ToString();
 
                 var dialog = new ContentDialog
                 {
-                    Content = "The font size must be a number between 8 and 72.",
-                    CloseButtonText = "Close",
+                    Title = "The font size must be a number between 8 and 72.",
+                    CloseButtonText = "Ok",
                     DefaultButton = ContentDialogButton.Close
                 };
                 var task = dialog.ShowAsync();
             }
-
-            // Mark the event as handled so the framework doesn’t update the selected item automatically. 
             args.Handled = true;
         }
 
@@ -1370,18 +1366,14 @@ namespace Notes
 
         private async void FeedBack_Click(object sender, RoutedEventArgs e)
         {
-            var uriBing = new Uri(@"https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAc11dY1URFAxTkRNMEZMVEsxWTlWRE9SRkVHWElOUi4u");
+            var uriBing = new Uri(@"https://github.com/Rise-Software/Rise-Notes/issues/new/choose");
 
             var success = await Windows.System.Launcher.LaunchUriAsync(uriBing);
 
             if (success)
-            {
-
-            }
+            {}
             else
-            {
-
-            }
+            {}
         }
 
         private void MenuFlyoutItem_Click_5(object sender, RoutedEventArgs e)

@@ -44,7 +44,7 @@
                 </AppBarButton>
                 <Grid VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,-51,270,0" Height="34" Width="64">
                     <TextBlock x:Uid="/About/Version" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Top"/>
-                    <TextBlock Text="Canary-2" FontSize="12" VerticalAlignment="Bottom" Opacity="0.7"/>
+                    <TextBlock Text="Pre-Alpha 1" FontSize="12" VerticalAlignment="Bottom" Opacity="0.7"/>
                 </Grid>
                 <AppBarButton x:Name="verBt" HorizontalAlignment="Right" VerticalAlignment="Top"  Margin="0,-65,255,0" FontSize="10" Width="120" Height="65" CornerRadius="5,5,5,5" Click="AppBarButton_Click_1">
                     <AppBarButton.Icon>
@@ -53,7 +53,7 @@
                 </AppBarButton>
                 <Grid VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,-50,15,0" Height="34" Width="70">
                     <TextBlock Text="GitHub" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Top"/>
-                    <TextBlock x:Uid="/About/Cont" FontSize="12" VerticalAlignment="Bottom" Opacity="0.7" Foreground="{ThemeResource SystemAccentColorLight1}"/>
+                    <TextBlock x:Uid="/About/Cont" FontSize="12" VerticalAlignment="Bottom" Foreground="{ThemeResource HyperlinkForegroundThemeBrush}"/>
                 </Grid>
                 <AppBarButton HorizontalAlignment="Right" Click="Button_Click_1" VerticalAlignment="Top"  Margin="0,-65,15,0" FontSize="10" Width="110" Height="65" CornerRadius="5,5,5,5">
                     <AppBarButton.Icon>
@@ -75,8 +75,7 @@
 	                IsLightDismissEnabled="True">
                     <muxc:TeachingTip.Content>
                         <Grid Margin="0,10,0,0">
-                            <Button x:Uid="CV" Content="Copy Version" HorizontalAlignment="Left" Click="Button_Click_5" Width="135"/>
-                            <Button x:Uid="CU" Content="Check for updates" HorizontalAlignment="Right" Width="135" Click="Button_Click_6"/>
+                            <Button x:Uid="CV" Content="Copy Version" Click="Button_Click_5"/>
                         </Grid>
                     </muxc:TeachingTip.Content>
                 </muxc:TeachingTip>
@@ -149,47 +148,41 @@
                         </StackPanel>
                     </muxc:Expander.Content>
                 </muxc:Expander>
-                <TextBlock x:Uid="More" Margin="15,25,0,10" Text="More"  FontSize="14" FontWeight="SemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <TextBlock x:Uid="More" Margin="15,10,0,10" Text="More"  FontSize="14" FontWeight="SemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                 <muxc:InfoBar Margin="15,0,15,150" IsOpen="True" IsClosable="False" IsIconVisible="False" Height="61" VerticalAlignment="Bottom" Background="{StaticResource cl}">
                     <Grid Height="60">
                         <FontIcon Glyph="&#xE15F;" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" />
                         <TextBlock Margin="30,-14,0,0" x:Uid="/About/Social" Height="23" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <TextBlock Margin="30,28,0,0" x:Uid="VersionTxt" Height="29" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.7"/>
-                        <HyperlinkButton HorizontalAlignment="Right" Margin="0,0,20,0" Content="Reddit" NavigateUri="https://www.reddit.com/r/risesoftware/" Foreground="{ThemeResource SystemAccentColorLight1}"/>
-                        <HyperlinkButton HorizontalAlignment="Right" Margin="0,0,95,0" Content="Twitter" NavigateUri="https://twitter.com/AppsbyRise" Foreground="{ThemeResource SystemAccentColorLight1}"/>
-                        <HyperlinkButton HorizontalAlignment="Right" Margin="0,0,170,0" Content="Discord" NavigateUri="https://discord.gg/ex6Bhwnwth" Foreground="{ThemeResource SystemAccentColorLight1}"/>
+                        <HyperlinkButton HorizontalAlignment="Right" Margin="0,0,15,0" Content="Reddit" NavigateUri="https://www.reddit.com/r/risesoftware/"/>
+                        <HyperlinkButton HorizontalAlignment="Right" Margin="0,0,90,0" Content="Twitter" NavigateUri="https://twitter.com/AppsbyRise"/>
+                        <HyperlinkButton HorizontalAlignment="Right" Margin="0,0,165,0" Content="Discord" NavigateUri="https://discord.gg/ex6Bhwnwth"/>
                     </Grid>
                 </muxc:InfoBar>
-                <muxc:Expander IsExpanded="False" Margin="15,-145,15,40" HorizontalAlignment="Stretch" Padding="10,10,10,10" MinHeight="51" VerticalAlignment="Top">
-                    <muxc:Expander.Header>
-                        <Grid ColumnSpacing="12"
-                      VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="1*"/>
-                            </Grid.ColumnDefinitions>
+                <muxc:InfoBar IsOpen="True" IsClosable="False" IsIconVisible="False"  Margin="15,-145,15,40" HorizontalAlignment="Stretch" MinHeight="51" VerticalAlignment="Top"  Background="{StaticResource cl}">
+                    <muxc:InfoBar.Content>
+                        <Grid Margin="0,9,0,0" VerticalAlignment="Center">
                             <FontIcon Glyph="&#xF28B;" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" />
                             <StackPanel Grid.Column="1"
                                 Orientation="Vertical"
-                                VerticalAlignment="Center">
+                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0">
                                 <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="/About/TC"
-                                   VerticalAlignment="Center" />
+                                   VerticalAlignment="Center" Text="" HorizontalAlignment="Left" Margin="0,-1,0,0" />
                             </StackPanel>
+                            <HyperlinkButton HorizontalAlignment="Right" Margin="0,0,15,0" NavigateUri="https://github.com/Rise-Software/Rise-Notes/blob/bloom_build-(main)/LICENSE" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}" Width="30" Padding="0,5,0,6">
+                                <HyperlinkButton.Content>
+                                    <FontIcon Glyph="&#xE8A7;" FontSize="16" Margin="0,1,1,0"/>
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
                         </Grid>
-                    </muxc:Expander.Header>
-                    <muxc:Expander.Content>
-                        <Grid Padding="10,10,10,10">
-                            <TextBlock Text="Terms" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBlock Text="This is free software with no warranty of any kind. Sorry :(  We use the GPL License with a few changed clauses to protect our apps' integrity. Click the GPL License button to see the full license without the changed clauses.  Changed clauses:  Users are allowed to freely edit and view the code for their own personal use and recreation. Although, unlike the regular GPL license, we do not allow users to share, distribute or sell our code unless they have our &amp; our contributors permission to do so. By using this software, you agree to our Terms. Please simply ask and we'll be happy to chat with you." FontSize="14" Margin="0,25,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>
-                        </Grid>
-                    </muxc:Expander.Content>
-                </muxc:Expander>
+                    </muxc:InfoBar.Content>
+                </muxc:InfoBar>
                 <Grid Margin="0,-50,0,0" VerticalAlignment="Center">
                     <TextBlock Text="©" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="18" Opacity="0.6" Margin="15,0,0,-2" Padding="0,0,0,0" FontWeight="SemiBold"/>
                     <FontIcon Glyph="&#xE00B;" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="345,0,0,1" FontSize="16" Opacity="0.6"/>
                     <TextBlock VerticalAlignment="Bottom" Margin="40,0,0,0" FontSize="14" Text="Rise" Opacity="0.6" HorizontalAlignment="Left" FontWeight="SemiBold"/>
                     <TextBlock VerticalAlignment="Bottom" Margin="69,0,15,0" FontSize="14" Text="Software. Made with love in England &amp; Italy" Opacity="0.6"/>
-                    <HyperlinkButton x:Uid="/About/MoreCredits" HorizontalAlignment="Right" Margin="0,0,5,-2.5" NavigateUri="https://github.com/BlkDev9/Rise-Notes/tree/newreadme#credits" Foreground="{ThemeResource SystemAccentColorLight1}" VerticalAlignment="Bottom" Height="25" FontSize="12" Padding="10,0,10,2" HorizontalContentAlignment="Right"/>
+                    <HyperlinkButton x:Uid="/About/MoreCredits" HorizontalAlignment="Right" Margin="0,0,5,-2.5" NavigateUri="https://github.com/BlkDev9/Rise-Notes/tree/newreadme#credits" VerticalAlignment="Bottom" Height="25" FontSize="12" Padding="10,0,10,2" HorizontalContentAlignment="Right"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

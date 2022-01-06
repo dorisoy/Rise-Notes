@@ -399,8 +399,8 @@
                     <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="#4CFFFFFF"/>
                 </Grid.FocusVisualPrimaryBrush>
                 <TextBlock x:Name="fileName" x:FieldModifier="public" HorizontalAlignment="Left" Margin="20,-1,0,0" Text="New Document" Padding="0,0,0,28" VerticalAlignment="Center" FontSize="12" Height="17" Width="250" TextTrimming="CharacterEllipsis"/>
-                <TextBlock x:Name="fileTypeBar" HorizontalAlignment="Left" Margin="280,-1,0,0" Text="Text Document (.txt)" TextWrapping="Wrap" Padding="0,0,0,0" VerticalAlignment="Center" FontSize="12" Opacity="0.5"/>
-
+                <TextBlock x:Name="fileTypeBar" HorizontalAlignment="Right" Margin="0,-1,155,0" Text="Text Document (.txt)" TextWrapping="Wrap" Padding="0,0,0,0" VerticalAlignment="Center" FontSize="12" Opacity="0.5"/>
+                
                 <Grid x:Name="colorG" HorizontalAlignment="Right" Margin="0,0,10,1" VerticalAlignment="Center" CornerRadius="3,3,3,3" Background="#0000B9FF" Padding="5,5,5,5" Height="25">
                     <TextBlock x:Name="Edit" Text="Modified"
                     x:Uid="EditText"
@@ -416,6 +416,7 @@
                     </muxc:TeachingTip.IconSource>
                 </muxc:TeachingTip>
                 <TextBlock x:Name="tipEnter" Foreground="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Text=".          ." PointerPressed="TextBlock_PointerEntered_1" PointerEntered="tipEnter_PointerEntered" PointerExited="tipEnter_PointerExited" FontSize="14" Margin="0,2,5,0" Opacity="0.35" Height="22" Width="123" />
+                <Rectangle Width="2" HorizontalAlignment="Right" Margin="0,0,135,0" Height="17" RadiusX="2" RadiusY="2" Fill="#4C9C9C9C"/>
             </Grid>
         </Border>
 
