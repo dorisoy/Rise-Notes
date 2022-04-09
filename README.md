@@ -2,15 +2,15 @@
   <img src="https://user-images.githubusercontent.com/74561130/162589094-6c0927be-1c74-4d02-8d0d-abce4383a833.png"/> 
 </p>
   
-**Pre-Alpha 1 coming very soon**
+**The all new Rise Notes, coming later this year.**
 
 **Rise Notes** gives new life to interfaces and features you are familiar with. We always try to make our apps beautiful while remaining functional and Rise Notes continues that philosiphy.
 
 ## Appearance & Design
 
-We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious with everything else. We aim to look as native as possible. You can see our current design below :D
+We use WinUI 2.6/2.7 to keep our user interface, clean, modern and consistent with Windows 11 UX. Although, this app does work on Windows 10 too. We use all of your favourite materials: Mica and Acrylic. Icons are the same ones used as those in Windows 11 and our icon tries to remain harmonious. We aim to look as native as possible. You can see what we're working on below:
 
-![image(4)](https://user-images.githubusercontent.com/86930621/139593351-db0d42b4-646b-46a7-9f8b-1ee571161d06.png)
+![Frame 72](https://user-images.githubusercontent.com/74561130/162589190-a85c071d-8197-4c95-9848-15816d551bcc.png)
 
 ## Features Available in current commit
 
