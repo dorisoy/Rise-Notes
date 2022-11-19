@@ -2,7 +2,7 @@
   <img src="https://user-images.githubusercontent.com/74561130/162589094-6c0927be-1c74-4d02-8d0d-abce4383a833.png"/> 
 </p>
   
-**The all new Rise Notes, coming later this year.**
+**The all new Rise Notes, coming late 2023.**
 
 **Rise Notes** gives new life to interfaces and features you are familiar with. We always try to make our apps beautiful while remaining functional and Rise Notes continues that philosiphy.
 
